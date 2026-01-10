@@ -1,1 +1,1363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia de Prospección UKG - Playbook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Librería para gráficos futuros si se requiere -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        /* Colores corporativos inspirados en UKG */
+        .bg-ukg-dark { background-color: #002c3e; }
+        .bg-ukg-teal { background-color: #005f77; }
+        .text-ukg-cyan { color: #00a4b4; }
+        .bg-ukg-cyan { background-color: #00a4b4; }
+        .border-ukg-cyan { border-color: #00a4b4; }
+        .text-ukg-teal { color: #005f77; }
+        .hover-bg-ukg-teal:hover { background-color: #004c60; }
+        
+        /* Utilidades */
+        .funnel-card {
+            transition: all 0.3s ease;
+        }
+        .funnel-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+            border-color: #00a4b4;
+        }
 
+        .flow-line {
+            position: absolute;
+            z-index: 0;
+            top: 45%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e5e7eb;
+            transform: translateY(-50%);
+        }
+
+        .infographic-scroll {
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #00a4b4 #f3f4f6;
+        }
+        
+        .stage-goal {
+            background-color: #f8fafc;
+            border-top: 2px solid;
+            font-size: 0.85rem; 
+            padding: 0.75rem;
+            margin-top: auto;
+            border-radius: 0 0 0.5rem 0.5rem;
+            line-height: 1.4;
+        }
+
+        /* Sección de altura completa */
+        .full-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            padding-top: 80px; 
+            padding-bottom: 40px;
+        }
+
+        /* Badges para tipos de campaña */
+        .badge-mixed { @apply bg-orange-100 text-orange-700 border border-orange-200; }
+        .badge-manual { @apply bg-purple-100 text-purple-700 border border-purple-200; }
+        .badge-auto { @apply bg-blue-100 text-blue-700 border border-blue-200; }
+        
+        /* Estilo para snippet de código/reporte */
+        .report-snippet {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #f1f5f9;
+            border-left: 4px solid #005f77;
+        }
+
+        /* Estilo para Scripts de Mensajes */
+        .script-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-size: 0.875rem;
+            color: #334155;
+            white-space: pre-wrap; /* Mantiene saltos de línea */
+            position: relative;
+        }
+        .script-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: white;
+            padding: 0 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+        }
+
+        /* Animación para barras de progreso */
+        @keyframes loadProgress {
+            from { width: 0; }
+        }
+        .progress-bar-fill {
+            animation: loadProgress 1.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- NAV (Sticky) -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+            <!-- LOGOS Y TÍTULO -->
+<div class="flex items-center gap-3">
+    
+    <!-- Logo UKG -->
+    <div class="h-8 px-2 bg-ukg-teal rounded flex items-center justify-center shadow-sm">
+        <span class="text-white font-bold text-xs tracking-wide">UKG</span>
+    </div>
+
+    <!-- Logo MTI (nuevo, mismo tamaño visual) -->
+    <div class="h-8 px-2 bg-slate-800 rounded flex items-center justify-center shadow-sm">
+        <img 
+            src="mti-logo.png" 
+            alt="MTI Logo"
+            class="h-6 w-auto object-contain"
+        >
+    </div>
+
+    <div class="h-6 w-px bg-slate-300 mx-1"></div>
+
+    <span class="font-bold text-lg md:text-xl text-slate-800 hidden sm:block">
+        SDR Playbook
+    </span>
+</div>
+
+
+                <!-- MENÚ DE NAVEGACIÓN -->
+                <div class="hidden md:flex space-x-4 text-xs lg:text-sm font-medium">
+                    <a href="#home" class="text-slate-600 hover:text-ukg-teal transition">Inicio</a>
+                    <a href="#embudo" class="text-slate-600 hover:text-ukg-teal transition">Embudo</a>
+                    <a href="#campanas" class="text-slate-600 hover:text-ukg-teal transition">Campañas</a>
+                    <a href="#tareas" class="text-slate-600 hover:text-ukg-teal transition">Tareas</a>
+                    <a href="#mensajes" class="text-slate-600 hover:text-ukg-teal transition">Mensajes</a>
+                    <a href="#recursos" class="text-slate-600 hover:text-ukg-teal transition">Recursos</a>
+                </div>
+
+                <button class="bg-ukg-cyan text-white px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:bg-ukg-teal transition shadow-lg shadow-cyan-500/30">
+                    Descargar PDF
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 1: HOME / OBJETIVO & ESTRATEGIA -->
+    <!-- ========================================== -->
+    <section id="home" class="pt-12 pb-16 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            
+            <!-- Header Sección -->
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="bg-blue-50 text-ukg-cyan font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">SDR Playbook 2026</span>
+                <!-- TÍTULO Y TEXTO RESTAURADOS -->
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Objetivo & Estrategia General</h2>
+                <p class="text-slate-500 text-lg">
+                    Alineación estratégica para maximizar la generación de oportunidades calificadas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                
+                <!-- BLOQUE 1: DASHBOARD DE CUMPLIMIENTO -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-lg flex flex-col relative overflow-hidden">
+                    <!-- Header Card -->
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                                <i class="fa-solid fa-chart-pie text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-lg">Estado Objetivos</h3>
+                        </div>
+                        <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide animate-pulse">En curso</span>
+                    </div>
+
+                    <div class="space-y-6 flex-grow">
+                        
+                        <!-- 1. Objetivo Total Campaña -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="font-semibold text-slate-600">Meta Total (Campaña)</span>
+                                <span class="font-bold text-slate-800">1 / 45</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 mb-1 overflow-hidden">
+                                <!-- Porcentaje: 1/45 = 2.2% -> Color Rojo -->
+                                <div class="bg-red-500 h-2.5 rounded-full progress-bar-fill" style="width: 2.22%"></div>
+                            </div>
+                            <p class="text-[10px] text-red-500 font-medium text-right">2.2% Completado</p>
+                        </div>
+
+                        <!-- Separador -->
+                        <div class="border-t border-slate-100"></div>
+
+                        <!-- 2. Objetivo Mensual -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="font-semibold text-slate-600">Meta Mensual (11)</span>
+                                <span class="font-bold text-slate-800">1 Agendada</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-4 mb-1 overflow-hidden relative">
+                                <!-- Porcentaje: 1/11 = 9% -> Color Rojo -->
+                                <div class="bg-red-500 h-4 rounded-full progress-bar-fill" style="width: 9%"></div>
+                                <!-- Marker Ideal (Ejemplo visual al 30% del mes) -->
+                                <div class="absolute top-0 bottom-0 w-0.5 bg-slate-400 opacity-50" style="left: 30%" title="Proyección ideal a la fecha"></div>
+                            </div>
+                            <div class="flex justify-between items-center mt-1">
+                                <div class="flex gap-2 text-[9px] text-slate-400">
+                                    <span class="flex items-center gap-1"><div class="w-1.5 h-1.5 rounded-full bg-red-500"></div> Crítico</span>
+                                    <span class="flex items-center gap-1"><div class="w-1.5 h-1.5 rounded-full bg-yellow-400"></div> En camino</span>
+                                    <span class="flex items-center gap-1"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div> Logrado</span>
+                                </div>
+                                <span class="text-[10px] text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded">Riesgo Alto</span>
+                            </div>
+                        </div>
+
+                        <!-- 3. Objetivo Semanal -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="font-semibold text-slate-600">Meta Semanal (3)</span>
+                                <span class="font-bold text-slate-800">1 Agendada</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 mb-1 overflow-hidden">
+                                <!-- Porcentaje: 1/3 = 33% -> Color Naranja -->
+                                <div class="bg-yellow-400 h-2.5 rounded-full progress-bar-fill" style="width: 33.3%"></div>
+                            </div>
+                            <p class="text-[10px] text-yellow-600 font-medium text-right">33% - ¡Acelerar!</p>
+                        </div>
+
+                        <!-- 4. Proyección Visual -->
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 mt-2">
+                            <div class="flex items-center gap-2 mb-1">
+                                <i class="fa-solid fa-chart-line text-slate-400 text-xs"></i>
+                                <span class="text-xs font-bold text-slate-600 uppercase">Proyección Actual</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-500">Si mantenemos el ritmo:</span>
+                                <span class="text-sm font-bold text-slate-700">~4 / 11 <span class="text-[10px] font-normal text-red-400">(Mensual)</span></span>
+                            </div>
+                            <div class="mt-1 text-[10px] text-slate-400 italic">
+                                *Necesitamos aumentar volumen de contactos x3.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- BLOQUE 2: ESTRATEGIA GENERAL -->
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-100 shadow-sm flex flex-col hover:border-purple-300 transition-colors">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+                            <i class="fa-solid fa-chess text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-xl">Estrategia</h3>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-between">
+                        <p class="text-slate-600 text-base leading-relaxed mb-4">
+                            Nuestra estrategia se basa en la <strong>relevancia contextual</strong>. No buscamos volumen masivo sin sentido, sino interacciones de calidad basadas en el momento adecuado.
+                        </p>
+                        <div class="bg-white rounded-lg p-4 border border-slate-100">
+                            <h4 class="text-sm font-bold text-slate-700 mb-3">Enfoque por Canal:</h4>
+                            <ul class="space-y-3 text-sm text-slate-600">
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-brands fa-linkedin text-blue-700 text-lg"></i>
+                                    <span><strong>LinkedIn:</strong> Visibilidad y Autoridad.</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-regular fa-envelope text-blue-500 text-lg"></i>
+                                    <span><strong>Email:</strong> Valor y Contexto.</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i>
+                                    <span><strong>WhatsApp:</strong> Agilidad y Cierre.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 3: PRINCIPIO CLAVE -->
+                <div class="bg-ukg-dark rounded-xl p-8 shadow-lg flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4 group-hover:scale-110 transition-transform duration-700">
+                        <i class="fa-solid fa-quote-right text-9xl text-white"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-1 bg-ukg-cyan mx-auto mb-8 rounded-full"></div>
+                        <p class="text-2xl md:text-3xl font-bold text-white leading-tight mb-6">
+                            "Los canales abren puertas. <br>
+                            <span class="text-ukg-cyan">Las conversaciones de valor generan reuniones."</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BOTÓN SCROLL DOWN -->
+            <div class="flex justify-center">
+                <a href="#embudo" class="flex flex-col items-center gap-2 text-slate-400 hover:text-ukg-teal transition animate-bounce">
+                    <span class="text-xs font-semibold uppercase tracking-widest">Ver Embudo</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 2: EMBUDO VISUAL -->
+    <!-- ========================================== -->
+    <section id="embudo" class="py-16 bg-slate-50 relative overflow-hidden border-t border-slate-200">
+        <div class="max-w-[98%] mx-auto relative z-10 w-full">
+            
+            <div class="text-center mb-10">
+                <h1 class="text-3xl md:text-5xl font-bold text-slate-900 mt-4 mb-2">
+                    Embudo de Prospección <span class="text-ukg-cyan">UKG</span>
+                </h1>
+                <p class="text-slate-500 max-w-3xl mx-auto text-sm md:text-base">
+                    Un enfoque estratégico para generar conversaciones relevantes.
+                </p>
+            </div>
+
+            <!-- CONTENEDOR INFOGRAFÍA -->
+            <div class="infographic-scroll mb-8">
+                <div class="min-w-[1400px] flex items-stretch justify-between gap-4 px-4 py-4 relative">
+                    
+                    <!-- Línea de flujo de fondo -->
+                    <div class="flow-line hidden lg:block"></div>
+
+                    <!-- ETAPA 1: ACTIVACIÓN -->
+                    <div class="w-[18%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
+                        <div class="p-3 pb-0 text-center">
+                            <span class="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded uppercase">Etapa 1</span>
+                            <h3 class="font-bold text-slate-700 text-base mt-2">Activación</h3>
+                            <p class="text-xs text-slate-500 mt-1 leading-snug mb-3">
+                                Activamos campañas para generar visibilidad, contexto y primeros puntos de contacto.
+                            </p>
+                        </div>
+                        <div class="flex-grow flex flex-col gap-3 px-2 pb-2">
+                            <!-- Card: LinkedIn -->
+                            <div class="funnel-card bg-white p-3 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-1 h-full bg-blue-700"></div>
+                                <div class="flex items-center gap-2 mb-1 text-blue-800">
+                                    <i class="fa-brands fa-linkedin text-base"></i>
+                                    <span class="font-bold text-sm">LinkedIn</span>
+                                </div>
+                                <ul class="text-xs text-slate-500 pl-2 border-l border-slate-100 leading-snug space-y-1">
+                                    <li>Prospección general</li>
+                                    <li>Invitación a evento</li>
+                                </ul>
+                            </div>
+                            <!-- Card: Email -->
+                            <div class="funnel-card bg-white p-3 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                                <div class="flex items-center gap-2 mb-1 text-blue-600">
+                                    <i class="fa-regular fa-envelope text-base"></i>
+                                    <span class="font-bold text-sm">Email Marketing</span>
+                                </div>
+                                <ul class="text-xs text-slate-500 pl-2 border-l border-slate-100 leading-snug space-y-1">
+                                    <li>Prospección LATAM</li>
+                                    <li>Prospección Brasil</li>
+                                    <li>Campaña Webinar</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="stage-goal border-blue-200 text-blue-800">
+                            <span class="font-bold block mb-1">📌 Objetivo:</span>
+                            <span class="text-xs">👉 Generar conversaciones y primeras señales de interés.</span>
+                        </div>
+                    </div>
+
+                    <!-- CONECTOR -->
+                    <div class="relative z-10 flex items-center justify-center w-6">
+                        <i class="fa-solid fa-chevron-right text-slate-300"></i>
+                    </div>
+
+                    <!-- ETAPA 2: INTERACCIÓN -->
+                    <div class="w-[16%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
+                        <div class="p-3 pb-0 text-center">
+                            <span class="text-xs font-bold text-yellow-600 bg-yellow-100 px-2 py-0.5 rounded uppercase">Etapa 2</span>
+                            <h3 class="font-bold text-slate-700 text-base mt-2">Interacción</h3>
+                            <p class="text-xs text-slate-500 mt-1 leading-snug mb-3">
+                                Detectamos señales reales de interés generadas por las campañas.
+                            </p>
+                        </div>
+                        <div class="flex-grow px-2 pb-2 flex flex-col justify-center">
+                            <div class="funnel-card bg-white p-4 rounded-lg border-2 border-yellow-400 shadow-sm text-center">
+                                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 mb-3 mx-auto text-lg">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-sm mb-2">Señales</h4>
+                                <ul class="text-xs text-slate-600 text-left space-y-1.5 pl-4 list-disc">
+                                    <li>Apertura</li>
+                                    <li>Click</li>
+                                    <li>Respuesta</li>
+                                    <li>Aceptación</li>
+                                    <li>Mensaje entrante</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="stage-goal border-yellow-200 text-yellow-800">
+                            <span class="font-bold block mb-1">📌 Objetivo:</span>
+                            <span class="text-xs">👉 Identificar qué cuentas y contactos merecen acción SDR.</span>
+                        </div>
+                    </div>
+
+                    <!-- CONECTOR -->
+                    <div class="relative z-10 flex items-center justify-center w-6">
+                        <i class="fa-solid fa-code-branch text-slate-300"></i>
+                    </div>
+
+                    <!-- ETAPA 3: ACCIÓN SEGÚN ORIGEN -->
+                    <div class="w-[30%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
+                        <div class="p-3 pb-0 text-center">
+                            <span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded uppercase">Etapa 3</span>
+                            <h3 class="font-bold text-slate-700 text-base mt-2">Acción según Origen</h3>
+                            <p class="text-xs text-slate-500 mt-1 leading-snug mb-2">
+                                Definimos la acción según canal e interacción (Criterio SDR).
+                            </p>
+                            <div class="bg-blue-50 border border-blue-100 rounded p-2 mb-2 mx-2 flex gap-2 items-start text-left">
+                                <i class="fa-solid fa-magnifying-glass text-xs text-blue-500 mt-0.5"></i>
+                                <p class="text-xs text-slate-600 leading-snug">
+                                    Before-Action: Investigar perfil, empresa, industria y puntos de dolor.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex-grow px-2 pb-2 grid grid-cols-2 gap-2">
+                            <!-- 1. Email Prospección -->
+                            <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm">
+                                <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-solid fa-1"></i> Email Prospección</div>
+                                <div class="text-[11px] text-slate-500 leading-snug">
+                                    <span class="font-semibold text-slate-700">Acción:</span> Correo 1 a 1 personalizado.
+                                </div>
+                            </div>
+                            <!-- 2. Email Webinar -->
+                            <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm">
+                                <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-solid fa-2"></i> Email Webinar</div>
+                                <div class="text-[11px] text-slate-500 leading-snug">
+                                    <span class="font-semibold text-slate-700">Acción:</span> Ayuda para registro y apertura.
+                                </div>
+                            </div>
+                            <!-- 3. LinkedIn -->
+                            <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm">
+                                <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-brands fa-linkedin"></i> LinkedIn (Todos)</div>
+                                <div class="text-[11px] text-slate-500 leading-snug">
+                                    <span class="font-semibold text-slate-700">Acción:</span> Follow-up & Chat continuo.
+                                </div>
+                            </div>
+                            <!-- 4. WhatsApp -->
+                            <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm">
+                                <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-brands fa-whatsapp"></i> WhatsApp (Webinar)</div>
+                                <div class="text-[11px] text-slate-500 leading-snug">
+                                    <span class="font-semibold text-slate-700">Acción:</span> Ofrecer ayuda directa con el registro.
+                                </div>
+                            </div>
+                            <!-- 5. Llamados -->
+                            <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm col-span-2">
+                                <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-solid fa-phone"></i> Llamados</div>
+                                <div class="text-[11px] text-slate-500 leading-snug">
+                                    <span class="font-semibold text-slate-700">Acción:</span> Refuerzo cuando el contexto lo amerita.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stage-goal border-green-200 text-green-800">
+                            <span class="font-bold block mb-1">📌 Objetivo:</span>
+                            <span class="text-xs">👉 Iniciar una conversación relevante, no automática.</span>
+                        </div>
+                    </div>
+
+                    <!-- CONECTOR -->
+                    <div class="relative z-10 flex items-center justify-center w-6">
+                        <i class="fa-solid fa-chevron-right text-slate-300"></i>
+                    </div>
+
+                    <!-- ETAPA 4: CONVERSACIÓN -->
+                    <div class="w-[18%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
+                        <div class="p-3 pb-0 text-center">
+                            <span class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded uppercase">Etapa 4</span>
+                            <h3 class="font-bold text-slate-700 text-base mt-2">Conversación</h3>
+                            <p class="text-xs text-slate-500 mt-1 leading-snug mb-3">
+                                Diálogo activo y contextualizado para entender el escenario.
+                            </p>
+                        </div>
+                        <div class="flex-grow px-2 pb-2 flex flex-col justify-center">
+                            <div class="funnel-card bg-white p-3 rounded-lg border border-purple-200 shadow-sm text-center">
+                                <div class="flex justify-center gap-3 mb-3 text-base">
+                                    <i class="fa-brands fa-whatsapp text-green-500"></i>
+                                    <i class="fa-regular fa-envelope text-blue-500"></i>
+                                    <i class="fa-brands fa-linkedin text-blue-700"></i>
+                                    <i class="fa-solid fa-phone text-slate-600"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-1 mb-2">Actividades</h4>
+                                <ul class="text-xs text-slate-600 text-left space-y-1.5 pl-2">
+                                    <li>• Calificación</li>
+                                    <li>• Identificación de dolores</li>
+                                    <li>• Contexto operativo</li>
+                                    <li>• Alineación de valor</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="stage-goal border-purple-200 text-purple-800">
+                            <span class="font-bold block mb-1">📌 Objetivo:</span>
+                            <span class="text-xs">👉 Validar si existe oportunidad real de conversación comercial.</span>
+                        </div>
+                    </div>
+
+                    <!-- CONECTOR -->
+                    <div class="relative z-10 flex items-center justify-center w-6">
+                        <i class="fa-solid fa-arrow-right text-ukg-cyan"></i>
+                    </div>
+
+                    <!-- ETAPA 5: CONVERSIÓN -->
+                    <div class="w-[15%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
+                        <div class="p-3 pb-0 text-center">
+                            <span class="text-xs font-bold text-white bg-ukg-teal px-2 py-0.5 rounded uppercase">Goal</span>
+                            <h3 class="font-bold text-slate-700 text-base mt-2">Conversión</h3>
+                            <p class="text-xs text-slate-500 mt-1 leading-snug mb-3">
+                                Transformamos la charla en una reunión.
+                            </p>
+                        </div>
+                        <div class="flex-grow px-2 pb-2 flex flex-col justify-center">
+                            <div class="funnel-card bg-gradient-to-br from-ukg-teal to-ukg-cyan p-0.5 rounded-lg shadow-md transform hover:scale-105 transition-transform">
+                                <div class="bg-white p-3 rounded-[6px] h-full flex flex-col justify-center items-center text-center">
+                                    <div class="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center text-green-600 mb-2 text-lg">
+                                        <i class="fa-regular fa-calendar-check"></i>
+                                    </div>
+                                    <ul class="text-xs text-slate-600 mb-2 leading-snug space-y-1">
+                                        <li>Propuesta agenda</li>
+                                        <li>Confirmación</li>
+                                        <li>Envío invitación</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stage-goal border-ukg-cyan text-ukg-teal bg-cyan-50">
+                            <span class="font-bold block mb-1">📌 Resultado:</span>
+                            <span class="text-xs">👉 Reunión agendada y calificada.</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- NOTA FLOTANTE -->
+            <div class="max-w-4xl mx-auto mt-6 px-4">
+                <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r shadow-sm flex flex-col md:flex-row items-start md:items-center gap-3">
+                    <div class="flex items-center gap-2 min-w-max">
+                        <i class="fa-solid fa-circle-exclamation text-red-500 text-xl"></i>
+                        <span class="font-bold text-red-800 text-base uppercase">Criterio del SDR</span>
+                    </div>
+                    <div class="text-sm text-slate-700 leading-relaxed">
+                        <p>Todas las acciones están sujetas al criterio del SDR. El canal y el mensaje se adaptan según el contexto, la respuesta y el interés percibido. <strong>El objetivo es avanzar la conversación, no forzarla.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 3: CAMPAÑAS -->
+    <!-- ========================================== -->
+    <section id="campanas" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header Campañas -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="bg-purple-50 text-purple-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">Ejecución Operativa</span>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Campañas & Canales</h2>
+                <p class="text-slate-500 text-lg">
+                    Detalle de ejecución, automatización y tareas manuales. Las campañas alimentan directamente el embudo de prospección.
+                </p>
+            </div>
+
+            <!-- GRID PRINCIPAL -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- COLUMNA 1: LINKEDIN -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+                        <i class="fa-brands fa-linkedin text-3xl text-blue-700"></i>
+                        <h3 class="text-2xl font-bold text-slate-800">LinkedIn</h3>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 1. Brasil General -->
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-blue-300 transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Prospección General</h4>
+                                <span class="badge-mixed text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wide">Mixto</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3 italic">Obj: Iniciar conversación 1:1 basada en dolores por industria.</p>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><strong class="text-blue-600">Automatizado:</strong> Apertura contextual + Pregunta directa.</p>
+                                <div class="pl-3 border-l-2 border-slate-200">
+                                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Acción Manual SDR (Post-respuesta):</p>
+                                    <ul class="list-disc list-inside text-xs space-y-1">
+                                        <li>Investigación lead/empresa.</li>
+                                        <li>Profundización en dolores operativos.</li>
+                                        <li>Invitación a reunión.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Brasil Reforma -->
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-blue-300 transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Reforma Laboral</h4>
+                                <span class="badge-mixed text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wide">Mixto</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3 italic">Obj: Aprovechar contexto regulatorio.</p>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><strong class="text-blue-600">Automatizado:</strong> Contexto reforma + Pregunta.</p>
+                                <div class="pl-3 border-l-2 border-slate-200">
+                                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Acción Manual SDR:</p>
+                                    <ul class="list-disc list-inside text-xs space-y-1">
+                                        <li>Profundizar impacto operativo.</li>
+                                        <li>Avanzar a reunión.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Brasil Webinar -->
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-blue-300 transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Webinar</h4>
+                                <span class="badge-manual text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wide">Manual</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3 italic">Obj: Facilitar registro y acelerar.</p>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><strong>Proceso:</strong> Invitación directa al evento.</p>
+                                <div class="pl-3 border-l-2 border-slate-200">
+                                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Si hay respuesta:</p>
+                                    <ul class="list-disc list-inside text-xs space-y-1">
+                                        <li>Ofrecer ayuda registro.</li>
+                                        <li>Solicitar teléfono/WhatsApp.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. LATAM General -->
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-blue-300 transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-slate-800">🌎 LATAM — Prospección Gral.</h4>
+                                <span class="badge-manual text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wide">100% Manual</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3 italic">Obj: Iniciar conversaciones 1:1.</p>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><strong>Proceso:</strong> Invitación (con/sin nota) + Mensaje inicial.</p>
+                                <div class="pl-3 border-l-2 border-slate-200">
+                                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Gestión Continua:</p>
+                                    <ul class="list-disc list-inside text-xs space-y-1">
+                                        <li>Lectura de contexto.</li>
+                                        <li>Profundización manual.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA 2: EMAIL MARKETING -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+                        <i class="fa-regular fa-envelope text-3xl text-ukg-teal"></i>
+                        <h3 class="text-2xl font-bold text-slate-800">Email Marketing</h3>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 5. Brasil Email General -->
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-ukg-cyan transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Email Prospección</h4>
+                                <span class="badge-mixed text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wide">Auto + Manual</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3 italic">Obj: Activar base y detectar interés.</p>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><strong class="text-ukg-teal">Envío:</strong> Campaña masiva/segmentada.</p>
+                                <div class="pl-3 border-l-2 border-slate-200">
+                                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Si hay interacción:</p>
+                                    <ul class="list-disc list-inside text-xs space-y-1">
+                                        <li>Correo personalizado SDR.</li>
+                                        <li>Seguimiento manual.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. Brasil Email Reforma -->
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-ukg-cyan transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Email Reforma</h4>
+                                <span class="badge-mixed text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wide">Auto + Manual</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3 italic">Obj: Diálogo sobre reforma laboral.</p>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><strong class="text-ukg-teal">Envío:</strong> Campaña contextual.</p>
+                                <div class="pl-3 border-l-2 border-slate-200">
+                                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Si hay interacción:</p>
+                                    <ul class="list-disc list-inside text-xs space-y-1">
+                                        <li>Correo personalizado.</li>
+                                        <li>Foco en impacto reforma.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 7. Brasil Email Webinar -->
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-ukg-cyan transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Email Webinar</h4>
+                                <span class="badge-mixed text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wide">Auto + Manual</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3 italic">Obj: Generar registros calificados.</p>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><strong class="text-ukg-teal">Envío:</strong> Invitación al evento.</p>
+                                <div class="pl-3 border-l-2 border-slate-200">
+                                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Acción SDR:</p>
+                                    <ul class="list-disc list-inside text-xs space-y-1">
+                                        <li>Correo de ayuda registro.</li>
+                                        <li>Búsqueda teléfono/WhatsApp.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 8. LATAM Email General -->
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-ukg-cyan transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-slate-800">🌎 LATAM — Email General</h4>
+                                <span class="badge-mixed text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wide">Auto + Manual</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3 italic">Obj: Activar base LATAM.</p>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><strong class="text-ukg-teal">Envío:</strong> Campaña masiva/segmentada.</p>
+                                <div class="pl-3 border-l-2 border-slate-200">
+                                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Si hay interacción:</p>
+                                    <ul class="list-disc list-inside text-xs space-y-1">
+                                        <li>Correo personalizado.</li>
+                                        <li>Avance a conversación.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CONSIDERACIÓN TRANSVERSAL -->
+            <div class="mt-16 bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg shadow-sm">
+                <div class="flex items-start gap-4">
+                    <i class="fa-solid fa-magnifying-glass text-blue-500 text-2xl mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-blue-900 text-lg mb-2">📌 Consideración Transversal</h4>
+                        <p class="text-blue-800 leading-relaxed">
+                            Antes de iniciar cualquier mensaje o follow-up, el SDR debe revisar el perfil del lead, la empresa, la industria y posibles puntos de dolor para <strong>adaptar el canal y el mensaje</strong>. La automatización es solo el inicio; la inteligencia es humana.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LINK A SIGUIENTE SECCIÓN -->
+            <div class="mt-8 text-center">
+                <a href="#tareas" class="inline-flex items-center gap-2 text-ukg-teal font-bold hover:underline transition">
+                    Ver Sección: Tareas SDR <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 4: TAREAS SDR (ACTUALIZADA) -->
+    <!-- ========================================== -->
+    <section id="tareas" class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header Tareas -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="bg-orange-50 text-orange-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">Gestión Diaria</span>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Tareas SDR & Ejecución</h2>
+                <p class="text-slate-500 text-lg">
+                    Ejecución orientada a resultados, consistencia y colaboración entre Brasil y LATAM.
+                </p>
+            </div>
+
+            <!-- OBJETIVO DE EJECUCIÓN -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100 mb-12 flex flex-col md:flex-row items-center gap-6">
+                <div class="w-16 h-16 bg-ukg-cyan/10 rounded-full flex items-center justify-center text-ukg-cyan shrink-0">
+                    <i class="fa-solid fa-crosshairs text-3xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">🎯 Objetivo de la Ejecución</h3>
+                    <p class="text-slate-600">Aportar de forma constante al objetivo mensual y semanal, manteniendo un flujo activo de invitaciones, conversaciones y seguimientos. <strong>Priorizar acciones que impacten directamente en resultados.</strong></p>
+                </div>
+            </div>
+
+            <!-- ORGANIZACIÓN DEL TRABAJO (MODELO COLABORATIVO) -->
+            <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-orange-500 pl-3">👥 Organización del Trabajo SDR</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Igor -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border-t-4 border-yellow-400 flex flex-col h-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">🇧🇷</span>
+                        <h3 class="text-xl font-bold text-slate-800">Igor (Brasil)</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600 flex-grow">
+                        <li class="flex gap-2"><i class="fa-solid fa-bullseye text-yellow-500 mt-1"></i> <strong>Foco:</strong> Prospección y conversaciones en LinkedIn (Brasil).</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-language text-yellow-500 mt-1"></i> <strong>Rol Clave:</strong> Gestión nativa en portugués y apoyo en la preparación de mensajes personalizados.</li>
+                        <li class="flex gap-2 items-start"><i class="fa-solid fa-users-gear text-yellow-500 mt-1"></i> <strong>Participación Activa:</strong>
+                            <ul class="list-disc list-inside ml-2 text-xs text-slate-500 mt-1">
+                                <li>Gestión de campañas de email y seguimiento.</li>
+                                <li>Investigación y enriquecimiento de leads.</li>
+                                <li>Avance de conversaciones y cierre.</li>
+                            </ul>
+                        </li>
+                        <li class="flex gap-2 items-start"><i class="fa-solid fa-handshake-angle text-yellow-500 mt-1"></i> <strong>Apoyo a Robert:</strong>
+                            <span class="text-xs text-slate-500 block mt-0.5">Respuestas en LinkedIn para leads Brasil y ajuste de mensajes por idioma/contexto.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Robert -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border-t-4 border-blue-400 flex flex-col h-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">🌎</span>
+                        <h3 class="text-xl font-bold text-slate-800">Robert (LATAM)</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600 flex-grow">
+                        <li class="flex gap-2"><i class="fa-solid fa-bullseye text-blue-500 mt-1"></i> <strong>Foco:</strong> Prospección LATAM y soporte operativo para Brasil.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-envelope-open-text text-blue-500 mt-1"></i> <strong>Rol Clave:</strong> Gestión de campañas de email y atención personalizada multicanal.</li>
+                        <li class="flex gap-2 items-start"><i class="fa-solid fa-users-gear text-blue-500 mt-1"></i> <strong>Participación Activa:</strong>
+                            <ul class="list-disc list-inside ml-2 text-xs text-slate-500 mt-1">
+                                <li>Investigación y enriquecimiento de leads.</li>
+                                <li>Avance de conversaciones y cierre.</li>
+                            </ul>
+                        </li>
+                        <li class="flex gap-2 items-start"><i class="fa-solid fa-handshake-angle text-blue-500 mt-1"></i> <strong>Apoyo a Igor:</strong>
+                            <span class="text-xs text-slate-500 block mt-0.5">Envío de mensajes por WhatsApp y seguimiento operativo para continuidad.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PRINCIPIO DE COLABORACIÓN -->
+            <div class="bg-slate-100 rounded-xl p-6 mb-4 border border-slate-200">
+                <div class="flex items-center gap-3 mb-3 text-ukg-teal">
+                    <i class="fa-solid fa-people-arrows text-2xl"></i>
+                    <h3 class="text-lg font-bold">🤝 Principio de Colaboración</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-700">
+                    <div>
+                        <p class="mb-2"><strong>Responsabilidad Compartida:</strong></p>
+                        <ul class="list-disc list-inside space-y-1 text-slate-600">
+                            <li>Gestión de campañas de email y seguimiento.</li>
+                            <li>Investigación y enriquecimiento de leads.</li>
+                            <li>Avance de conversaciones y cierre.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="mb-2"><strong>Beneficios Clave:</strong></p>
+                        <ul class="list-disc list-inside space-y-1 text-slate-600">
+                            <li>El idioma orienta el foco, pero no limita la participación.</li>
+                            <li>Responder en tiempo y forma (Agilidad).</li>
+                            <li>Mantener continuidad en las conversaciones.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NOTA COLABORATIVA -->
+            <div class="text-center mb-12">
+                <p class="text-xs text-slate-500 italic bg-white inline-block px-4 py-2 rounded-full border border-slate-100 shadow-sm">
+                    💡 El trabajo se organiza de forma colaborativa. El foco por idioma ayuda a optimizar la calidad, pero ambos SDR pueden dar continuidad cuando el contexto lo amerita.
+                </p>
+            </div>
+
+            <!-- DINÁMICA DE TRABAJO (Alternancia) -->
+            <div class="bg-slate-100 rounded-xl p-8 mb-12 border border-slate-200 opacity-75">
+                <h3 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-rotate text-ukg-teal"></i> Dinámica de Alternancia (Referencial)
+                </h3>
+                <div class="flex flex-col md:flex-row gap-6 items-center">
+                    <div class="flex-1 bg-white p-4 rounded-lg shadow-sm text-center w-full">
+                        <span class="block text-xs font-bold text-slate-400 uppercase mb-2">Día A</span>
+                        <strong class="text-slate-800">SDR 1: Invitaciones Webinar</strong>
+                    </div>
+                    <div class="text-slate-400"><i class="fa-solid fa-arrow-right-arrow-left text-xl"></i></div>
+                    <div class="flex-1 bg-white p-4 rounded-lg shadow-sm text-center w-full">
+                        <span class="block text-xs font-bold text-slate-400 uppercase mb-2">Día B</span>
+                        <strong class="text-slate-800">SDR 2: Conexión & Prospección</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OBJETIVOS SEMANALES (3 COLUMNAS) -->
+            <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-ukg-teal pl-3">📌 Ejecución Semanal</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- LinkedIn -->
+                <div class="bg-white p-5 rounded-lg border border-slate-100 shadow-sm">
+                    <h4 class="font-bold text-blue-700 mb-3"><i class="fa-brands fa-linkedin"></i> LinkedIn</h4>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>• Cumplir meta invitaciones.</li>
+                        <li>• Mensajes prospección.</li>
+                        <li>• Posteos semanales.</li>
+                        <li>• Interacción (Likes/Comentarios).</li>
+                    </ul>
+                </div>
+                <!-- Webinar -->
+                <div class="bg-white p-5 rounded-lg border border-slate-100 shadow-sm">
+                    <h4 class="font-bold text-purple-700 mb-3"><i class="fa-solid fa-video"></i> Webinar</h4>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>• Invitaciones al evento.</li>
+                        <li>• Seguimiento interacciones.</li>
+                        <li>• Acompañamiento registro.</li>
+                    </ul>
+                </div>
+                <!-- Email -->
+                <div class="bg-white p-5 rounded-lg border border-slate-100 shadow-sm">
+                    <h4 class="font-bold text-green-700 mb-3"><i class="fa-regular fa-envelope"></i> Email Mkt</h4>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>• Atención a Aperturas/Clicks.</li>
+                        <li>• Definir canal continuidad.</li>
+                        <li>• Respuesta rápida.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- REPORTE SEMANAL -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                
+                <!-- Columna Izquierda: Seguimiento -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4">📈 Seguimiento y Medición</h3>
+                    <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm space-y-4">
+                        <div class="border-b border-slate-100 pb-3">
+                            <h5 class="font-bold text-sm text-slate-700 mb-1">Viernes: Reporte de KPIs</h5>
+                            <p class="text-xs text-slate-500">Actualizar reporte, fechas de aceptación, estados de conversación y <strong>respuestas de LinkedIn</strong>.</p>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-sm text-slate-700 mb-1">Viernes: Reporte Campañas</h5>
+                            <p class="text-xs text-slate-500">Solicitar reporte de <strong>secuencias automáticas</strong> a Wen.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Formato Reporte -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4">📊 Reporte Semanal Simple</h3>
+                    <div class="report-snippet p-4 rounded text-xs text-slate-700 overflow-x-auto shadow-inner">
+                        <pre>SDR: [Nombre] | Semana: [Fecha]
+
+LinkedIn
+- Invitaciones enviadas: 
+- Follow-ups realizados: 
+
+Webinar
+- Invitaciones enviadas: 
+- Follow-ups realizados: 
+
+Email & WhatsApp
+- Correos personalizados: 
+- Mensajes enviados: 
+
+Resultados
+- Conversaciones activas: 
+- Reuniones agendadas: 
+- Registrados al evento: </pre>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-2 text-center">Copiar y pegar cada viernes para dar visibilidad.</p>
+                </div>
+            </div>
+
+            <!-- PRINCIPIO FINAL -->
+            <div class="text-center bg-ukg-dark text-white p-8 rounded-xl shadow-lg">
+                <i class="fa-solid fa-star text-yellow-400 text-2xl mb-3"></i>
+                <h3 class="text-xl md:text-2xl font-bold mb-2">"No es hacer más, sino hacer mejor lo que acerca a resultados."</h3>
+                <p class="text-slate-400 text-sm">La información compartida permite aprender, ajustar y mejorar como equipo.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 5: MENSAJES DE EJEMPLO (NUEVA) -->
+    <!-- ========================================== -->
+    <section id="mensajes" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header Mensajes -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="bg-indigo-50 text-indigo-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">Scripts & Templates</span>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Mensajes de Ejemplo</h2>
+                <p class="text-slate-500 text-lg mb-6">
+                    Por canal, campaña e idioma. Estos mensajes están pensados para abrir conversaciones; la profundidad se desarrolla manualmente.
+                </p>
+                
+                <!-- NOTA DE CONTEXTO BRASIL -->
+                <div class="inline-flex items-center gap-2 bg-yellow-50 text-yellow-800 px-4 py-2 rounded-lg text-sm border border-yellow-100 shadow-sm">
+                    <i class="fa-solid fa-language text-yellow-600"></i>
+                    <span class="italic">Nota: La traducción al español de la actividad de Brasil se incluye para que el resto del equipo tenga contexto.</span>
+                </div>
+            </div>
+
+            <!-- BLOQUE 1: LINKEDIN BRASIL -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-3">
+                    <span class="text-3xl">🇧🇷</span>
+                    <h3 class="text-2xl font-bold text-blue-800"><i class="fa-brands fa-linkedin"></i> LinkedIn — Brasil</h3>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- CAMPAÑA 1: GENERAL -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-slate-700 border-l-4 border-blue-500 pl-3">Campaña 1: Prospección General</h4>
+                        
+                        <!-- Conexión -->
+                        <div class="script-box">
+                            <span class="script-label">Mensaje de Conexión</span>
+                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
+                            Olá {FirstName}, tudo bem?
+                            Sou Channel Sales Manager LATAM na UKG.
+                            Gostaria de me conectar com você.
+
+                            <div class="my-3 border-t border-slate-200"></div>
+
+                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
+                            Hola {FirstName}, ¿cómo estás?
+                            Soy Channel Sales Manager LATAM en UKG.
+                            Me gustaría conectar contigo.
+                        </div>
+
+                        <!-- Pregunta -->
+                        <div class="script-box">
+                            <span class="script-label">Mensaje 2 - Pregunta</span>
+                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
+                            Olá {FirstName}, bom dia 😊
+                            Você poderia me ajudar com uma consulta?
+
+                            <div class="my-3 border-t border-slate-200"></div>
+
+                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
+                            Hola {FirstName}, buen día 😊
+                            ¿Me ayudarías con una consulta?
+                        </div>
+                    </div>
+
+                    <!-- CAMPAÑA 2: REFORMA -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-slate-700 border-l-4 border-yellow-500 pl-3">Campaña 2: Prospección — Reforma Laboral</h4>
+                        
+                        <!-- Conexión -->
+                        <div class="script-box">
+                            <span class="script-label">Mensaje de Conexión</span>
+                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
+                            Olá {FirstName}, tudo bem?
+                            Tenho acompanhado as conversas sobre possíveis mudanças na jornada de trabalho no Brasil e seus impactos operacionais.
+                            Gostaria de me conectar com você.
+
+                            <div class="my-3 border-t border-slate-200"></div>
+
+                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
+                            Hola {FirstName}, ¿cómo estás?
+                            He estado siguiendo las conversaciones sobre posibles cambios en la jornada laboral en Brasil y su impacto operativo.
+                            Me gustaría conectar contigo.
+                        </div>
+
+                        <!-- Pregunta -->
+                        <div class="script-box">
+                            <span class="script-label">Mensaje 2 - Pregunta</span>
+                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
+                            Olá {FirstName}, bom dia 😊
+                            Você poderia me ajudar com uma consulta?
+
+                            <div class="my-3 border-t border-slate-200"></div>
+
+                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
+                            Hola {FirstName}, buen día 😊
+                            ¿Me ayudarías con una consulta?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOQUE 2: LINKEDIN LATAM -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-3">
+                    <span class="text-3xl">🌎</span>
+                    <h3 class="text-2xl font-bold text-blue-800"><i class="fa-brands fa-linkedin"></i> LinkedIn — LATAM</h3>
+                </div>
+                
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="script-box bg-white">
+                            <span class="script-label">Mensaje de Conexión</span>
+                            Hola {FirstName}, ¿cómo estás?
+                            Soy Channel Sales Manager LATAM en UKG.
+                            Me gustaría conectar contigo.
+                        </div>
+                        <div class="script-box bg-white">
+                            <span class="script-label">Mensaje 2 - Pregunta</span>
+                            Hola {FirstName}, buen día 😊
+                            ¿Me ayudarías con una consulta?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOQUE 3: EMAIL BRASIL (REFORMA) -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-3">
+                    <span class="text-3xl">📧</span>
+                    <h3 class="text-2xl font-bold text-ukg-teal">Email — Brasil (Reforma 5x2)</h3>
+                </div>
+
+                <div class="bg-indigo-50 p-4 rounded-lg mb-6 text-sm text-indigo-800 border border-indigo-100">
+                    <i class="fa-solid fa-circle-info mr-2"></i> <strong>Enfoque consultivo:</strong> No se afirma que la ley esté vigente. UKG se posiciona como asesor.
+                </div>
+
+                <!-- Asuntos -->
+                <div class="mb-6">
+                    <h4 class="font-bold text-slate-700 mb-3 text-sm uppercase tracking-wide">Opciones de Asunto:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-3 rounded border border-slate-200 text-xs text-slate-600">
+                            <strong class="block text-slate-800 mb-1">1. Preparación Operativa</strong>
+                            PT: Preparação operacional diante das mudanças na jornada de trabalho
+                        </div>
+                        <div class="bg-white p-3 rounded border border-slate-200 text-xs text-slate-600">
+                            <strong class="block text-slate-800 mb-1">2. Cumplimiento / Riesgo</strong>
+                            PT: Riscos operacionais e conformidade diante do modelo 5×2
+                        </div>
+                        <div class="bg-white p-3 rounded border border-slate-200 text-xs text-slate-600">
+                            <strong class="block text-slate-800 mb-1">3. Retail / Impacto</strong>
+                            PT: O impacto do 5×2 na operação e no controle de escalas
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuerpos de Correo -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Mensaje A -->
+                    <div class="script-box">
+                        <span class="script-label">Mensaje A: Preparación Operativa</span>
+                        <strong class="text-indigo-600 block mb-2 text-xs uppercase">🇧🇷 Português (Principal)</strong>
+                        Olá {FirstName},
+
+                        Nos últimos meses, o debate sobre a possível mudança da jornada de trabalho no Brasil (de 6×1 para 5×2) ganhou força.
+
+                        Ainda não é lei, mas em outros mercados vimos que o maior desafio não foi a mudança em si, e sim a reorganização operacional, a gestão de escalas e o risco de não estar preparado a tempo.
+
+                        Em operações com múltiplos turnos, planejamento manual e grande volume de colaboradores, muitas empresas começaram a se perguntar:
+                        – Como reorganizar escalas sem aumentar custos?
+                        – Como sustentar a operação com menos horas?
+                        – Como reduzir riscos antes que isso seja obrigatório?
+
+                        A ideia deste contato não é vender nada agora, mas entender se esse cenário já está em discussão internamente e como vocês estão se preparando.
+
+                        Se fizer sentido, podemos trocar algumas ideias e compartilhar aprendizados de outros mercados que passaram por situações semelhantes.
+
+                        Fico à disposição,
+
+                        {Assinatura}
+                    </div>
+
+                    <!-- Mensaje B -->
+                    <div class="script-box">
+                        <span class="script-label">Mensaje B: Riesgo y Auditoría</span>
+                        <strong class="text-indigo-600 block mb-2 text-xs uppercase">🇧🇷 Português (Principal)</strong>
+                        Olá {FirstName},
+
+                        Com o avanço das discussões sobre o possível modelo 5×2 no Brasil, muitas empresas começaram a olhar além da jornada e focar em conformidade, auditoria e risco operacional.
+
+                        Em outros mercados, os maiores impactos não vieram apenas da mudança legal, mas da dificuldade em comprovar controle de escalas, garantir aderência às regras e responder a auditorias, especialmente em operações de varejo e ambientes intensivos em turnos.
+
+                        Algumas perguntas passaram a surgir com frequência:
+                        – Nossos controles atuais suportariam um cenário 5×2?
+                        – Conseguimos simular impactos antes que isso seja obrigatório?
+                        – Onde estão hoje os maiores riscos operacionais?
+
+                        A ideia deste contato não é falar de produto, mas entender se esse tema já está no radar de vocês e como estão avaliando riscos e preparação.
+
+                        Se fizer sentido, podemos trocar algumas ideias e compartilhar experiências de empresas que passaram por situações semelhantes.
+
+                        Fico à disposição,
+
+                        {Assinatura}
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOQUE 4: WEBINAR (WHATSAPP & LLAMADA) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- WhatsApp -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-3">
+                        <i class="fa-brands fa-whatsapp text-3xl text-green-500"></i>
+                        <h3 class="text-2xl font-bold text-slate-800">WhatsApp Webinar</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="script-box border-l-4 border-l-green-400">
+                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
+                            Olá {FirstName}, tudo bem?
+                            Te enviamos um convite para um webinar sobre gestão de equipes e turnos.
+                            Queria confirmar se recebeu e se precisa de ajuda com o registro.
+                        </div>
+                        <div class="script-box border-l-4 border-l-green-400">
+                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
+                            Hola {FirstName}, ¿cómo estás?
+                            Te enviamos una invitación a un webinar sobre gestión de equipos y turnos.
+                            Quería confirmar si la recibiste y si necesitas ayuda con el registro.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Llamada -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-3">
+                        <i class="fa-solid fa-phone text-3xl text-slate-600"></i>
+                        <h3 class="text-2xl font-bold text-slate-800">Llamada Webinar</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="script-box border-l-4 border-l-slate-400">
+                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
+                            Olá {FirstName}, tudo bem?
+                            Sou {Nome} da UKG.
+                            Estou ligando porque enviamos um convite para um webinar sobre gestão de turnos e queria confirmar se recebeu e se precisa de apoio para o registro.
+                        </div>
+                        <div class="script-box border-l-4 border-l-slate-400">
+                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
+                            Hola {FirstName}, ¿cómo estás?
+                            Te habla {Nombre} de UKG.
+                            Te llamo porque te enviamos una invitación a un webinar sobre gestión de turnos y queríamos saber si la recibiste y si necesitas ayuda con el registro.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- NOTA FINAL -->
+            <div class="mt-16 text-center">
+                <p class="text-sm text-slate-500 italic bg-slate-100 inline-block px-6 py-3 rounded-full border border-slate-200">
+                    📌 <strong>Nota:</strong> El objetivo de estos mensajes es abrir la conversación y habilitar diagnóstico. La personalización, el valor y la propuesta se construyen después, según el contexto del lead.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 6: RECURSOS (NUEVA) -->
+    <!-- ========================================== -->
+    <section id="recursos" class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="bg-slate-200 text-slate-700 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">Soporte & Docs</span>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Recursos de Apoyo y Documentación</h2>
+                <p class="text-slate-500 text-lg">
+                    Materiales de referencia y soporte para contextualizar conversaciones y preparar reuniones.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Columna 1: Material Estratégico -->
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-ukg-teal"></i> Materiales Estratégicos
+                    </h3>
+                    <div class="space-y-4">
+                        <!-- Card 1 -->
+                        <a href="https://mti-selling.github.io/UKG-prospeccion-Brasil-Reforma/" target="_blank" class="block bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md hover:border-ukg-teal transition group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-slate-700 group-hover:text-ukg-teal transition">Prospección Brasil — Reforma (5×2)</h4>
+                                    <p class="text-xs text-slate-500 mt-1">Guía completa sobre el contexto de la reforma laboral.</p>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-slate-300 group-hover:text-ukg-teal"></i>
+                            </div>
+                        </a>
+                        
+                        <!-- Card 2 -->
+                        <a href="https://mti-selling.github.io/Webinar-UKG/" target="_blank" class="block bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md hover:border-ukg-teal transition group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-slate-700 group-hover:text-ukg-teal transition">Webinar UKG — Material de Apoyo</h4>
+                                    <p class="text-xs text-slate-500 mt-1">Recursos clave para la invitación y seguimiento del webinar.</p>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-slate-300 group-hover:text-ukg-teal"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Fichas de Clientes -->
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-file-contract text-ukg-teal"></i> Fichas de Clientes Agendados
+                    </h3>
+                    
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 block border-b border-slate-100 pb-2">Enero</span>
+                        
+                        <!-- Cliente 1 -->
+                        <a href="https://mti-selling.github.io/UKG_Ficha-ARAUCO-Chile/" target="_blank" class="flex items-center justify-between p-3 rounded hover:bg-slate-50 transition group border-b border-slate-50 last:border-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-green-100 rounded flex items-center justify-center text-green-600">
+                                    <i class="fa-solid fa-building"></i>
+                                </div>
+                                <div>
+                                    <span class="block font-bold text-sm text-slate-700 group-hover:text-ukg-teal">ARAUCO — Chile</span>
+                                    <span class="text-[10px] text-slate-400">Reunión Confirmada</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-ukg-teal"></i>
+                        </a>
+
+                        <p class="text-[10px] text-slate-400 mt-4 italic text-center">
+                            (Este listado se irá ampliando a medida que se agenden nuevas reuniones.)
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-ukg-dark text-slate-300 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs md:text-sm">
+            <div class="mb-2 md:mb-0">
+                <span class="font-bold text-white">MTI-UKG Prospección</span> | Uso interno exclusivo.
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-white transition">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
