@@ -1008,124 +1008,244 @@ Resultados
     <section id="mensajes" class="py-16 bg-white border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Header Mensajes -->
-            <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="text-center max-w-3xl mx-auto mb-10">
                 <span class="bg-indigo-50 text-indigo-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">Scripts & Templates</span>
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Mensajes de Ejemplo</h2>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Mensajes de LinkedIn</h2>
                 <p class="text-slate-500 text-lg mb-6">
-                    Por canal, campaña e idioma. Estos mensajes están pensados para abrir conversaciones; la profundidad se desarrolla manualmente.
+                    Flujos de conversación estructurados. Haz clic en cada paso para ver el detalle.
                 </p>
                 
-                <!-- NOTA DE CONTEXTO BRASIL -->
                 <div class="inline-flex items-center gap-2 bg-yellow-50 text-yellow-800 px-4 py-2 rounded-lg text-sm border border-yellow-100 shadow-sm">
                     <i class="fa-solid fa-language text-yellow-600"></i>
-                    <span class="italic">Nota: La traducción al español de la actividad de Brasil se incluye para que el resto del equipo tenga contexto.</span>
+                    <span class="italic">Nota: Incluye traducciones y lógica estructural para Brasil y LATAM.</span>
                 </div>
             </div>
 
-            <!-- BLOQUE 1: LINKEDIN BRASIL -->
-            <div class="mb-12">
-                <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-3">
-                    <span class="text-3xl">🇧🇷</span>
-                    <h3 class="text-2xl font-bold text-blue-800"><i class="fa-brands fa-linkedin"></i> LinkedIn — Brasil</h3>
-                </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- CAMPAÑA 1: GENERAL -->
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-slate-700 border-l-4 border-blue-500 pl-3">Campaña 1: Prospección General</h4>
-                        
-                        <!-- Conexión -->
-                        <div class="script-box">
-                            <span class="script-label">Mensaje de Conexión</span>
-                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
-                            Olá {FirstName}, tudo bem?
-                            Sou Channel Sales Manager LATAM na UKG.
-                            Gostaria de me conectar com você.
+                <div class="space-y-8">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-3xl">🇧🇷</span>
+                        <h3 class="text-2xl font-bold text-blue-800">LinkedIn — Brasil</h3>
+                    </div>
 
-                            <div class="my-3 border-t border-slate-200"></div>
+                    <div>
+                        <h4 class="font-bold text-slate-700 border-l-4 border-blue-500 pl-3 mb-4">Campaña 1: Prospección General</h4>
+                        <div class="space-y-3">
+                            
+                            <details class="group">
+                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-ukg-teal transition">
+                                    <span>1. Mensaje de Conexión</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-ukg-cyan"></i></span>
+                                </summary>
+                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
+                                    Olá {FirstName}, tudo bem?
+                                    Sou Channel Sales Manager LATAM na UKG.
+                                    Gostaria de me conectar com você.
+                                </div>
+                            </details>
 
-                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
-                            Hola {FirstName}, ¿cómo estás?
-                            Soy Channel Sales Manager LATAM en UKG.
-                            Me gustaría conectar contigo.
-                        </div>
+                            <details class="group">
+                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-ukg-teal transition">
+                                    <span>2. Mensaje de Pregunta</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-ukg-cyan"></i></span>
+                                </summary>
+                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
+                                    Olá {FirstName}, bom dia 😊
+                                    Você poderia me ajudar com uma consulta?
+                                </div>
+                            </details>
 
-                        <!-- Pregunta -->
-                        <div class="script-box">
-                            <span class="script-label">Mensaje 2 - Pregunta</span>
-                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
-                            Olá {FirstName}, bom dia 😊
-                            Você poderia me ajudar com uma consulta?
+                            <details class="group">
+                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-white bg-ukg-teal border border-ukg-teal rounded-lg shadow-md hover:bg-ukg-dark transition">
+                                    <span>3. Mensaje de Valor (Modelo Replicable)</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-white"></i></span>
+                                </summary>
+                                <div class="bg-slate-50 border border-slate-200 rounded-b-lg p-4 text-sm mt-1">
+                                    
+                                    <div class="flex flex-col gap-4">
+                                        <div class="bg-blue-50 p-3 rounded border border-blue-100 text-xs text-blue-900">
+                                            <strong class="block mb-2 uppercase text-blue-700 border-b border-blue-200 pb-1">Estructura Lógica (4 Bloques)</strong>
+                                            <ol class="list-decimal list-inside space-y-1">
+                                                <li><strong>Abertura:</strong> Conectar com a resposta ("Obrigado pela abertura").</li>
+                                                <li><strong>Âncora:</strong> Demonstrar entendimento ("Pela sua experiência em...").</li>
+                                                <li><strong>Dor Concreta:</strong> 3 dores reais ("Visibilidade sobre X, Y, Z").</li>
+                                                <li><strong>Autoridade + CTA:</strong> UKG + GPTW ("Ajudamos empresas similares...").</li>
+                                            </ol>
+                                        </div>
 
-                            <div class="my-3 border-t border-slate-200"></div>
+                                        <div class="script-box relative">
+                                            <span class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">Template Base</span>
+                                            Obrigado, {FirstName}, pela abertura. 
+                                            
+                                            Pela sua experiência em {CARGO} dentro de {INDÚSTRIA}, queria te consultar se hoje na {EMPRESA} vocês têm visibilidade clara sobre {DOR 1}, {DOR 2} e {DOR 3}, que costumam ser pontos sensíveis nesse tipo de operação. 
+                                            
+                                            Te consulto porque na UKG, junto com Great Place to Work®, ajudamos empresas similares a melhorar esse equilíbrio entre operação e resultados. 
+                                            
+                                            Se te parecer bem, podemos conversar uns minutos, sem compromisso, para validar oportunidades ou compartilhar alguns casos de uso. O que você acha?
+                                        </div>
 
-                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
-                            Hola {FirstName}, buen día 😊
-                            ¿Me ayudarías con una consulta?
+                                        <div class="mt-2 pt-2 border-t border-slate-200">
+                                            <p class="text-xs font-bold text-slate-500 mb-2">Variación Corta / Directa:</p>
+                                            <p class="text-xs text-slate-600 italic">"Obrigado, {Name}. Pela sua experiência em RH no varejo, queria saber se hoje temas como turnos e custos trabalhistas estão totalmente sob controle. Na UKG trabalhamos justamente sobre esse equilíbrio. O que acha de conversarmos alguns minutos?"</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </details>
+
                         </div>
                     </div>
 
-                    <!-- CAMPAÑA 2: REFORMA -->
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-slate-700 border-l-4 border-yellow-500 pl-3">Campaña 2: Prospección — Reforma Laboral</h4>
-                        
-                        <!-- Conexión -->
-                        <div class="script-box">
-                            <span class="script-label">Mensaje de Conexión</span>
-                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
-                            Olá {FirstName}, tudo bem?
-                            Tenho acompanhado as conversas sobre possíveis mudanças na jornada de trabalho no Brasil e seus impactos operacionais.
-                            Gostaria de me conectar com você.
+                    <div class="mt-8">
+                        <h4 class="font-bold text-slate-700 border-l-4 border-yellow-500 pl-3 mb-4">Campaña 2: Reforma Laboral (5x2)</h4>
+                        <div class="space-y-3">
+                            
+                            <details class="group">
+                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-yellow-500 transition">
+                                    <span>1. Mensaje de Conexión</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-yellow-500"></i></span>
+                                </summary>
+                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
+                                    Olá {FirstName}, tudo bem?
+                                    Tenho acompanhado as conversas sobre possíveis mudanças na jornada de trabalho no Brasil e seus impactos operacionais.
+                                    Gostaria de me conectar com você.
+                                </div>
+                            </details>
 
-                            <div class="my-3 border-t border-slate-200"></div>
+                            <details class="group">
+                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-yellow-500 transition">
+                                    <span>2. Mensaje de Pregunta</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-yellow-500"></i></span>
+                                </summary>
+                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
+                                    Olá {FirstName}, bom dia 😊
+                                    Você poderia me ajudar com uma consulta?
+                                </div>
+                            </details>
 
-                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
-                            Hola {FirstName}, ¿cómo estás?
-                            He estado siguiendo las conversaciones sobre posibles cambios en la jornada laboral en Brasil y su impacto operativo.
-                            Me gustaría conectar contigo.
-                        </div>
+                            <details class="group">
+                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-white bg-yellow-500 border border-yellow-500 rounded-lg shadow-md hover:bg-yellow-600 transition">
+                                    <span>3. Mensaje Reforma (Consultivo)</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-white"></i></span>
+                                </summary>
+                                <div class="bg-slate-50 border border-slate-200 rounded-b-lg p-4 text-sm mt-1">
+                                    
+                                    <div class="flex flex-col gap-4">
+                                        <div class="bg-yellow-50 p-3 rounded border border-yellow-100 text-xs text-yellow-900">
+                                            <strong class="block mb-2 uppercase text-yellow-700 border-b border-yellow-200 pb-1">Lógica Reforma</strong>
+                                            <ul class="list-disc list-inside space-y-1">
+                                                <li><strong>Dolor Activado:</strong> Conectar la reforma con problemas operativos reales (control, costos, compliance).</li>
+                                                <li><strong>Autoridad Regional:</strong> "Ya acompañamos procesos similares en México/LATAM".</li>
+                                                <li><strong>No Venta:</strong> Anticiparse a cambios, no comprar software.</li>
+                                            </ul>
+                                        </div>
 
-                        <!-- Pregunta -->
-                        <div class="script-box">
-                            <span class="script-label">Mensaje 2 - Pregunta</span>
-                            <strong class="text-indigo-600 block mb-1 text-xs uppercase">🇧🇷 Português</strong>
-                            Olá {FirstName}, bom dia 😊
-                            Você poderia me ajudar com uma consulta?
+                                        <div class="script-box relative">
+                                            <span class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">Template Reforma</span>
+                                            Obrigado, {FirstName}, pela abertura.
+                                            
+                                            Pelo seu cargo de {CARGO} dentro de {INDÚSTRIA}, queria te consultar se hoje na {EMPRESA} já estão avaliando como a reforma trabalhista no Brasil pode impactar em {DOR 1}, {DOR 2} e {DOR 3}, que costumam ser pontos críticos em operações regionais.
+                                            
+                                            Te consulto porque na UKG já acompanhamos empresas em processos similares no México e outros países, e hoje estamos apoiando equipes que precisam se antecipar a essas mudanças tanto no operacional quanto no regulatório.
+                                            
+                                            Se te parecer bem, podemos conversar uns minutos, sem compromisso, para validar como estão abordando o tema. O que você acha?
+                                        </div>
+                                    </div>
 
-                            <div class="my-3 border-t border-slate-200"></div>
+                                </div>
+                            </details>
 
-                            <strong class="text-orange-600 block mb-1 text-xs uppercase">🇪🇸 Español</strong>
-                            Hola {FirstName}, buen día 😊
-                            ¿Me ayudarías con una consulta?
                         </div>
                     </div>
                 </div>
+
+                <div class="space-y-8">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-3xl">🌎</span>
+                        <h3 class="text-2xl font-bold text-blue-800">LinkedIn — LATAM</h3>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-slate-700 border-l-4 border-indigo-500 pl-3 mb-4">Prospección General (Español)</h4>
+                        <div class="space-y-3">
+                            
+                            <details class="group">
+                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-ukg-teal transition">
+                                    <span>1. Mensaje de Conexión</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-ukg-cyan"></i></span>
+                                </summary>
+                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
+                                    Hola {FirstName}, ¿cómo estás?
+                                    Soy Channel Sales Manager LATAM en UKG.
+                                    Me gustaría conectar contigo.
+                                </div>
+                            </details>
+
+                            <details class="group">
+                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-ukg-teal transition">
+                                    <span>2. Mensaje de Pregunta</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-ukg-cyan"></i></span>
+                                </summary>
+                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
+                                    Hola {FirstName}, buen día 😊
+                                    ¿Me ayudarías con una consulta?
+                                </div>
+                            </details>
+
+                            <details class="group">
+                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-white bg-indigo-600 border border-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 transition">
+                                    <span>3. Mensaje de Valor (Modelo Replicable)</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-white"></i></span>
+                                </summary>
+                                <div class="bg-slate-50 border border-slate-200 rounded-b-lg p-4 text-sm mt-1">
+                                    
+                                    <div class="flex flex-col gap-4">
+                                        <div class="bg-indigo-50 p-3 rounded border border-indigo-100 text-xs text-indigo-900">
+                                            <strong class="block mb-2 uppercase text-indigo-700 border-b border-indigo-200 pb-1">Estructura Lógica (4 Bloques)</strong>
+                                            <ol class="list-decimal list-inside space-y-1">
+                                                <li><strong>Apertura:</strong> Bajar defensas ("Gracias por la apertura").</li>
+                                                <li><strong>Ancla al Rol:</strong> Demostrar entendimiento, no investigación ("Por tu experiencia en...").</li>
+                                                <li><strong>Dolor Concreto:</strong> Máx 3 dolores ("Visibilidad sobre X, Y").</li>
+                                                <li><strong>Autoridad Suave:</strong> UKG + GPTW ("Ayudamos a empresas similares...").</li>
+                                                <li><strong>CTA:</strong> Sin salida fácil ("Validar oportunidades en unos minutos").</li>
+                                            </ol>
+                                        </div>
+
+                                        <div class="script-box relative">
+                                            <span class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">Plantilla Base</span>
+                                            Gracias, {FirstName}, por la apertura.
+                                            
+                                            Por tu experiencia en {ROL} dentro de {INDUSTRIA}, quería consultarte si hoy en {EMPRESA} tienen visibilidad clara sobre {DOLOR 1}, {DOLOR 2} y {DOLOR 3}, que suelen ser puntos sensibles en este tipo de operaciones.
+                                            
+                                            Te consulto porque en UKG, junto con Great Place to Work®, ayudamos a empresas similares a mejorar este equilibrio entre operación y resultados.
+                                            
+                                            Si te parece, podemos conversar unos minutos, sin compromiso, para validar oportunidades o compartir algunos casos de uso. ¿Qué te parece?
+                                        </div>
+
+                                        <div class="mt-2 pt-2 border-t border-slate-200">
+                                            <p class="text-xs font-bold text-slate-500 mb-2">Variación Breve:</p>
+                                            <p class="text-xs text-slate-600 italic">"Gracias, Arianna. Por tu experiencia en RRHH, quería saber si hoy temas como turnos y costos laborales están totalmente bajo control. En UKG trabajamos justamente sobre ese equilibrio. ¿Te parece si lo conversamos unos minutos, sin compromiso?"</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </details>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- BLOQUE 2: LINKEDIN LATAM -->
-            <div class="mb-12">
-                <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-3">
-                    <span class="text-3xl">🌎</span>
-                    <h3 class="text-2xl font-bold text-blue-800"><i class="fa-brands fa-linkedin"></i> LinkedIn — LATAM</h3>
-                </div>
-                
-                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="script-box bg-white">
-                            <span class="script-label">Mensaje de Conexión</span>
-                            Hola {FirstName}, ¿cómo estás?
-                            Soy Channel Sales Manager LATAM en UKG.
-                            Me gustaría conectar contigo.
-                        </div>
-                        <div class="script-box bg-white">
-                            <span class="script-label">Mensaje 2 - Pregunta</span>
-                            Hola {FirstName}, buen día 😊
-                            ¿Me ayudarías con una consulta?
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-16 text-center">
+                <p class="text-sm text-slate-500 italic bg-slate-100 inline-block px-6 py-3 rounded-full border border-slate-200">
+                    📌 <strong>Nota:</strong> El objetivo de estos mensajes es abrir la conversación y habilitar diagnóstico. La personalización, el valor y la propuesta se construyen después, según el contexto del lead.
+                </p>
             </div>
+
+        </div>
+    </section>
 
             <!-- BLOQUE 3: EMAIL BRASIL (REFORMA) -->
             <div class="mb-12">
