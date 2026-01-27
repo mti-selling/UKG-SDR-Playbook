@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estrategia de Prospección UKG - Playbook</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Librería para gráficos futuros si se requiere -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         
@@ -116,19 +115,15 @@
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-    <!-- NAV (Sticky) -->
     <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-            <!-- LOGOS Y TÍTULO -->
-<div class="flex items-center gap-3">
+            <div class="flex items-center gap-3">
     
-    <!-- Logo UKG -->
     <div class="h-12 px-4 bg-ukg-teal rounded flex items-center justify-center shadow-sm">
         <span class="text-white font-bold text-xs tracking-wide">UKG</span>
     </div>
 
-    <!-- Logo MTI (nuevo, mismo tamaño visual) -->
     <div class="h-12 px-4 bg-slate-800 rounded flex items-center justify-center shadow-sm">
         <img 
             src="mti-logo.png" 
@@ -145,11 +140,10 @@
 </div>
 
 
-                <!-- MENÚ DE NAVEGACIÓN -->
                 <div class="hidden md:flex space-x-4 text-xs lg:text-sm font-medium">
                     <a href="#home" class="text-slate-600 hover:text-ukg-teal transition">Inicio</a>
                     <a href="#embudo" class="text-slate-600 hover:text-ukg-teal transition">Embudo</a>
-                    <a href="#campanas" class="text-slate-600 hover:text-ukg-teal transition">Campañas</a>
+                    <a href="#icp" class="text-ukg-cyan hover:text-ukg-teal transition font-bold">ICP</a> <a href="#campanas" class="text-slate-600 hover:text-ukg-teal transition">Campañas</a>
                     <a href="#tareas" class="text-slate-600 hover:text-ukg-teal transition">Tareas</a>
                     <a href="#mensajes" class="text-slate-600 hover:text-ukg-teal transition">Mensajes</a>
                     <a href="#recursos" class="text-slate-600 hover:text-ukg-teal transition">Recursos</a>
@@ -162,16 +156,11 @@
         </div>
     </nav>
 
-    <!-- ========================================== -->
-    <!-- SECCIÓN 1: HOME / OBJETIVO & ESTRATEGIA -->
-    <!-- ========================================== -->
     <section id="home" class="pt-12 pb-16 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             
-            <!-- Header Sección -->
             <div class="text-center max-w-3xl mx-auto mb-10">
                 <span class="bg-blue-50 text-ukg-cyan font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">SDR Playbook 2026</span>
-                <!-- TÍTULO Y TEXTO RESTAURADOS -->
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Objetivo & Estrategia General</h2>
                 <p class="text-slate-500 text-lg">
                     Alineación estratégica para maximizar la generación de oportunidades calificadas.
@@ -180,9 +169,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
                 
-                <!-- BLOQUE 1: DASHBOARD DE CUMPLIMIENTO -->
                 <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-lg flex flex-col relative overflow-hidden">
-                    <!-- Header Card -->
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
@@ -195,32 +182,26 @@
 
                     <div class="space-y-6 flex-grow">
                         
-                        <!-- 1. Objetivo Total Campaña -->
                         <div>
                             <div class="flex justify-between text-xs mb-1">
                                 <span class="font-semibold text-slate-600">Meta Total (Campaña)</span>
                                 <span class="font-bold text-slate-800">1 / 45</span>
                             </div>
                             <div class="w-full bg-slate-100 rounded-full h-2.5 mb-1 overflow-hidden">
-                                <!-- Porcentaje: 1/45 = 2.2% -> Color Rojo -->
                                 <div class="bg-red-500 h-2.5 rounded-full progress-bar-fill" style="width: 2.22%"></div>
                             </div>
                             <p class="text-[10px] text-red-500 font-medium text-right">2.2% Completado</p>
                         </div>
 
-                        <!-- Separador -->
                         <div class="border-t border-slate-100"></div>
 
-                        <!-- 2. Objetivo Mensual -->
                         <div>
                             <div class="flex justify-between text-xs mb-1">
                                 <span class="font-semibold text-slate-600">Meta Mensual (11)</span>
                                 <span class="font-bold text-slate-800">1 Agendada</span>
                             </div>
                             <div class="w-full bg-slate-100 rounded-full h-4 mb-1 overflow-hidden relative">
-                                <!-- Porcentaje: 1/11 = 9% -> Color Rojo -->
                                 <div class="bg-red-500 h-4 rounded-full progress-bar-fill" style="width: 9%"></div>
-                                <!-- Marker Ideal (Ejemplo visual al 30% del mes) -->
                                 <div class="absolute top-0 bottom-0 w-0.5 bg-slate-400 opacity-50" style="left: 30%" title="Proyección ideal a la fecha"></div>
                             </div>
                             <div class="flex justify-between items-center mt-1">
@@ -233,20 +214,17 @@
                             </div>
                         </div>
 
-                        <!-- 3. Objetivo Semanal -->
                         <div>
                             <div class="flex justify-between text-xs mb-1">
                                 <span class="font-semibold text-slate-600">Meta Semanal (3)</span>
                                 <span class="font-bold text-slate-800">1 Agendada</span>
                             </div>
                             <div class="w-full bg-slate-100 rounded-full h-2.5 mb-1 overflow-hidden">
-                                <!-- Porcentaje: 1/3 = 33% -> Color Naranja -->
                                 <div class="bg-yellow-400 h-2.5 rounded-full progress-bar-fill" style="width: 33.3%"></div>
                             </div>
                             <p class="text-[10px] text-yellow-600 font-medium text-right">33% - ¡Acelerar!</p>
                         </div>
 
-                        <!-- 4. Proyección Visual -->
                         <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 mt-2">
                             <div class="flex items-center gap-2 mb-1">
                                 <i class="fa-solid fa-chart-line text-slate-400 text-xs"></i>
@@ -264,7 +242,6 @@
                     </div>
                 </div>
 
-                <!-- BLOQUE 2: ESTRATEGIA GENERAL -->
                 <div class="bg-slate-50 rounded-xl p-6 border border-slate-100 shadow-sm flex flex-col hover:border-purple-300 transition-colors">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
@@ -296,7 +273,6 @@
                     </div>
                 </div>
 
-                <!-- BLOQUE 3: PRINCIPIO CLAVE -->
                 <div class="bg-ukg-dark rounded-xl p-8 shadow-lg flex flex-col justify-center items-center text-center relative overflow-hidden group">
                     <div class="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4 group-hover:scale-110 transition-transform duration-700">
                         <i class="fa-solid fa-quote-right text-9xl text-white"></i>
@@ -312,7 +288,6 @@
 
             </div>
 
-            <!-- BOTÓN SCROLL DOWN -->
             <div class="flex justify-center">
                 <a href="#embudo" class="flex flex-col items-center gap-2 text-slate-400 hover:text-ukg-teal transition animate-bounce">
                     <span class="text-xs font-semibold uppercase tracking-widest">Ver Embudo</span>
@@ -322,9 +297,6 @@
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECCIÓN 2: EMBUDO VISUAL -->
-    <!-- ========================================== -->
     <section id="embudo" class="py-16 bg-slate-50 relative overflow-hidden border-t border-slate-200">
         <div class="max-w-[98%] mx-auto relative z-10 w-full">
             
@@ -337,14 +309,11 @@
                 </p>
             </div>
 
-            <!-- CONTENEDOR INFOGRAFÍA -->
             <div class="infographic-scroll mb-8">
                 <div class="min-w-[1400px] flex items-stretch justify-between gap-4 px-4 py-4 relative">
                     
-                    <!-- Línea de flujo de fondo -->
                     <div class="flow-line hidden lg:block"></div>
 
-                    <!-- ETAPA 1: ACTIVACIÓN -->
                     <div class="w-[18%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
                         <div class="p-3 pb-0 text-center">
                             <span class="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded uppercase">Etapa 1</span>
@@ -354,7 +323,6 @@
                             </p>
                         </div>
                         <div class="flex-grow flex flex-col gap-3 px-2 pb-2">
-                            <!-- Card: LinkedIn -->
                             <div class="funnel-card bg-white p-3 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden">
                                 <div class="absolute top-0 left-0 w-1 h-full bg-blue-700"></div>
                                 <div class="flex items-center gap-2 mb-1 text-blue-800">
@@ -366,7 +334,6 @@
                                     <li>Invitación a evento</li>
                                 </ul>
                             </div>
-                            <!-- Card: Email -->
                             <div class="funnel-card bg-white p-3 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden">
                                 <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
                                 <div class="flex items-center gap-2 mb-1 text-blue-600">
@@ -386,12 +353,10 @@
                         </div>
                     </div>
 
-                    <!-- CONECTOR -->
                     <div class="relative z-10 flex items-center justify-center w-6">
                         <i class="fa-solid fa-chevron-right text-slate-300"></i>
                     </div>
 
-                    <!-- ETAPA 2: INTERACCIÓN -->
                     <div class="w-[16%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
                         <div class="p-3 pb-0 text-center">
                             <span class="text-xs font-bold text-yellow-600 bg-yellow-100 px-2 py-0.5 rounded uppercase">Etapa 2</span>
@@ -421,12 +386,10 @@
                         </div>
                     </div>
 
-                    <!-- CONECTOR -->
                     <div class="relative z-10 flex items-center justify-center w-6">
                         <i class="fa-solid fa-code-branch text-slate-300"></i>
                     </div>
 
-                    <!-- ETAPA 3: ACCIÓN SEGÚN ORIGEN -->
                     <div class="w-[30%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
                         <div class="p-3 pb-0 text-center">
                             <span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded uppercase">Etapa 3</span>
@@ -442,35 +405,30 @@
                             </div>
                         </div>
                         <div class="flex-grow px-2 pb-2 grid grid-cols-2 gap-2">
-                            <!-- 1. Email Prospección -->
                             <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm">
                                 <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-solid fa-1"></i> Email Prospección</div>
                                 <div class="text-[11px] text-slate-500 leading-snug">
                                     <span class="font-semibold text-slate-700">Acción:</span> Correo 1 a 1 personalizado.
                                 </div>
                             </div>
-                            <!-- 2. Email Webinar -->
                             <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm">
                                 <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-solid fa-2"></i> Email Webinar</div>
                                 <div class="text-[11px] text-slate-500 leading-snug">
                                     <span class="font-semibold text-slate-700">Acción:</span> Ayuda para registro y apertura.
                                 </div>
                             </div>
-                            <!-- 3. LinkedIn -->
                             <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm">
                                 <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-brands fa-linkedin"></i> LinkedIn (Todos)</div>
                                 <div class="text-[11px] text-slate-500 leading-snug">
                                     <span class="font-semibold text-slate-700">Acción:</span> Follow-up & Chat continuo.
                                 </div>
                             </div>
-                            <!-- 4. WhatsApp -->
                             <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm">
                                 <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-brands fa-whatsapp"></i> WhatsApp (Webinar)</div>
                                 <div class="text-[11px] text-slate-500 leading-snug">
                                     <span class="font-semibold text-slate-700">Acción:</span> Ofrecer ayuda directa con el registro.
                                 </div>
                             </div>
-                            <!-- 5. Llamados -->
                             <div class="funnel-card bg-white p-3 rounded border border-slate-200 shadow-sm col-span-2">
                                 <div class="text-xs font-bold text-green-700 mb-1"><i class="fa-solid fa-phone"></i> Llamados</div>
                                 <div class="text-[11px] text-slate-500 leading-snug">
@@ -484,12 +442,10 @@
                         </div>
                     </div>
 
-                    <!-- CONECTOR -->
                     <div class="relative z-10 flex items-center justify-center w-6">
                         <i class="fa-solid fa-chevron-right text-slate-300"></i>
                     </div>
 
-                    <!-- ETAPA 4: CONVERSACIÓN -->
                     <div class="w-[18%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
                         <div class="p-3 pb-0 text-center">
                             <span class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded uppercase">Etapa 4</span>
@@ -521,12 +477,10 @@
                         </div>
                     </div>
 
-                    <!-- CONECTOR -->
                     <div class="relative z-10 flex items-center justify-center w-6">
                         <i class="fa-solid fa-arrow-right text-ukg-cyan"></i>
                     </div>
 
-                    <!-- ETAPA 5: CONVERSIÓN -->
                     <div class="w-[15%] flex flex-col relative z-10 bg-white/50 rounded-xl border border-slate-100 shadow-sm p-1">
                         <div class="p-3 pb-0 text-center">
                             <span class="text-xs font-bold text-white bg-ukg-teal px-2 py-0.5 rounded uppercase">Goal</span>
@@ -558,7 +512,6 @@
                 </div>
             </div>
 
-            <!-- NOTA FLOTANTE -->
             <div class="max-w-4xl mx-auto mt-6 px-4">
                 <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r shadow-sm flex flex-col md:flex-row items-start md:items-center gap-3">
                     <div class="flex items-center gap-2 min-w-max">
@@ -574,13 +527,200 @@
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECCIÓN 3: CAMPAÑAS -->
-    <!-- ========================================== -->
+    <section id="icp" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="bg-teal-50 text-ukg-teal font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">Target & Foco</span>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Perfil de Cliente Ideal (ICP)</h2>
+                <p class="text-slate-500 text-lg">
+                    Características clave para calificar y priorizar las cuentas objetivo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Empresa</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-users text-slate-400 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-700">Tamaño:</strong>
+                                +1,000 Colaboradores.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-layer-group text-slate-400 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-700">Segmentos:</strong>
+                                B y C.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-sitemap text-slate-400 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-700">Estructura:</strong>
+                                Operaciones distribuidas, múltiples sedes o turnos complejos.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-green-50 rounded-bl-full -mr-4 -mt-4"></div>
+                    <div class="flex items-center gap-3 mb-4 relative z-10">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Geografía</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600 relative z-10">
+                        <li class="border-b border-slate-200 pb-2">
+                            <strong class="text-green-700 block mb-1">🇧🇷 Brasil (50% Foco)</strong>
+                        </li>
+                        <li class="border-b border-slate-200 pb-2">
+                            <strong class="text-slate-700">Región Andina:</strong>
+                            Colombia, Perú, Chile.
+                        </li>
+                        <li>
+                            <strong class="text-slate-700">Centroamérica (30%):</strong>
+                            Costa Rica, Guatemala, Panamá, El Salvador.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border-t-4 border-ukg-teal shadow-lg">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-teal-100 text-ukg-teal rounded-full flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-industry"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Industrias</h3>
+                    </div>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <span class="text-xs font-bold text-white bg-green-600 px-2 py-0.5 rounded uppercase">Foco ✅</span>
+                            <ul class="mt-2 space-y-1 text-slate-600 pl-2 border-l-2 border-green-200">
+                                <li>Retail & Supermercados</li>
+                                <li>Manufactura & Producción</li>
+                                <li>Logística & Transporte</li>
+                                <li>Hoteles & Restaurantes</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-white bg-red-500 px-2 py-0.5 rounded uppercase">No Prospectar ⛔</span>
+                            <p class="mt-2 text-xs text-slate-500">Salud, Gobierno, Banca, Educación, Telco, Tecnología.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                
+                <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+                    <h3 class="text-lg font-bold text-red-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-fire"></i> Puntos de Dolor (Pain Points)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-red-400 mt-1"></i> Alta rotación de personal.</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-red-400 mt-1"></i> Pago excesivo de horas extra.</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-red-400 mt-1"></i> Procesos manuales (Nómina/Asistencia).</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-red-400 mt-1"></i> Falta de datos en tiempo real.</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-red-400 mt-1"></i> Riesgo de cumplimiento legal.</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-red-400 mt-1"></i> Decisiones reactivas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+                    <h3 class="text-lg font-bold text-blue-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-bullseye"></i> Objetivos y Necesidades
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-500 mt-1"></i> Reducir costos de nómina.</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-500 mt-1"></i> Cumplimiento normativo local.</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-500 mt-1"></i> Automatización de procesos.</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-500 mt-1"></i> Integración con ERP/Payroll.</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-500 mt-1"></i> Mejora de productividad.</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-500 mt-1"></i> Transformación digital RRHH.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-800 text-white rounded-xl p-8 shadow-lg mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="border-b md:border-b-0 md:border-r border-slate-600 pb-6 md:pb-0 md:pr-6">
+                        <h4 class="font-bold text-ukg-cyan mb-3 uppercase text-xs tracking-wider">Decisores Clave</h4>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li>• Directores de RRHH</li>
+                            <li>• Directores de Payroll</li>
+                            <li>• Directores de Operaciones</li>
+                            <li>• Directores de Sistemas</li>
+                        </ul>
+                    </div>
+                    <div class="border-b md:border-b-0 md:border-r border-slate-600 pb-6 md:pb-0 md:pr-6 md:pl-6">
+                        <h4 class="font-bold text-ukg-cyan mb-3 uppercase text-xs tracking-wider">Influenciadores</h4>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li>• Finanzas (CFO)</li>
+                            <li>• Tecnología (CIO/CTO)</li>
+                            <li>• Gerencias medias</li>
+                        </ul>
+                        <p class="mt-3 text-xs text-slate-400 italic">Buscan: ROI, eficiencia y cumplimiento.</p>
+                    </div>
+                    <div class="md:pl-6">
+                        <h4 class="font-bold text-ukg-cyan mb-3 uppercase text-xs tracking-wider">Qué Valoran</h4>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li>✅ Experiencia en LATAM</li>
+                            <li>✅ Soporte regional y Partners</li>
+                            <li>✅ Integración rápida</li>
+                            <li>✅ Enfoque consultivo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-6 flex flex-col md:flex-row justify-around items-center gap-6 text-center">
+                <div>
+                    <span class="block text-xs text-slate-500 uppercase font-bold mb-1">Ticket Promedio (Año 1)</span>
+                    <span class="text-2xl font-bold text-ukg-teal">USD 80K - 100K</span>
+                    <span class="block text-[10px] text-slate-400">(Licenciamiento + Servicios)</span>
+                </div>
+                <div class="h-10 w-px bg-slate-200 hidden md:block"></div>
+                <div>
+                    <span class="block text-xs text-slate-500 uppercase font-bold mb-1">Ciclo de Venta</span>
+                    <span class="text-2xl font-bold text-slate-700">9 Meses</span>
+                    <span class="block text-[10px] text-slate-400">Promedio anual</span>
+                </div>
+                <div class="h-10 w-px bg-slate-200 hidden md:block"></div>
+                <div>
+                    <span class="block text-xs text-slate-500 uppercase font-bold mb-1">Eventos Clave</span>
+                    <div class="flex gap-2 justify-center mt-1">
+                        <span class="bg-slate-100 px-2 py-1 rounded text-xs text-slate-600">🇧🇷 BR</span>
+                        <span class="bg-slate-100 px-2 py-1 rounded text-xs text-slate-600">🇨🇴 CO</span>
+                        <span class="bg-slate-100 px-2 py-1 rounded text-xs text-slate-600">🇵🇦 PA</span>
+                        <span class="bg-slate-100 px-2 py-1 rounded text-xs text-slate-600">🇨🇷 CR</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <section id="campanas" class="py-16 bg-white border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Header Campañas -->
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <span class="bg-purple-50 text-purple-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">Ejecución Operativa</span>
                 <h2 class="text-3xl font-bold text-slate-900 mb-4">Campañas & Canales</h2>
@@ -589,10 +729,8 @@
                 </p>
             </div>
 
-            <!-- GRID PRINCIPAL -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 
-                <!-- COLUMNA 1: LINKEDIN -->
                 <div>
                     <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
                         <i class="fa-brands fa-linkedin text-3xl text-blue-700"></i>
@@ -600,7 +738,6 @@
                     </div>
 
                     <div class="space-y-6">
-                        <!-- 1. Brasil General -->
                         <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-blue-300 transition-colors">
                             <div class="flex justify-between items-start mb-3">
                                 <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Prospección General</h4>
@@ -620,7 +757,6 @@
                             </div>
                         </div>
 
-                        <!-- 2. Brasil Reforma -->
                         <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-blue-300 transition-colors">
                             <div class="flex justify-between items-start mb-3">
                                 <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Reforma Laboral</h4>
@@ -639,7 +775,6 @@
                             </div>
                         </div>
 
-                        <!-- 3. Brasil Webinar -->
                         <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-blue-300 transition-colors">
                             <div class="flex justify-between items-start mb-3">
                                 <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Webinar</h4>
@@ -658,7 +793,6 @@
                             </div>
                         </div>
 
-                        <!-- 4. LATAM General -->
                         <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-blue-300 transition-colors">
                             <div class="flex justify-between items-start mb-3">
                                 <h4 class="font-bold text-slate-800">🌎 LATAM — Prospección Gral.</h4>
@@ -679,7 +813,6 @@
                     </div>
                 </div>
 
-                <!-- COLUMNA 2: EMAIL MARKETING -->
                 <div>
                     <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
                         <i class="fa-regular fa-envelope text-3xl text-ukg-teal"></i>
@@ -687,7 +820,6 @@
                     </div>
 
                     <div class="space-y-6">
-                        <!-- 5. Brasil Email General -->
                         <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-ukg-cyan transition-colors">
                             <div class="flex justify-between items-start mb-3">
                                 <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Email Prospección</h4>
@@ -706,7 +838,6 @@
                             </div>
                         </div>
 
-                        <!-- 6. Brasil Email Reforma -->
                         <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-ukg-cyan transition-colors">
                             <div class="flex justify-between items-start mb-3">
                                 <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Email Reforma</h4>
@@ -725,7 +856,6 @@
                             </div>
                         </div>
 
-                        <!-- 7. Brasil Email Webinar -->
                         <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-ukg-cyan transition-colors">
                             <div class="flex justify-between items-start mb-3">
                                 <h4 class="font-bold text-slate-800">🇧🇷 Brasil — Email Webinar</h4>
@@ -744,7 +874,6 @@
                             </div>
                         </div>
 
-                        <!-- 8. LATAM Email General -->
                         <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-sm relative overflow-hidden group hover:border-ukg-cyan transition-colors">
                             <div class="flex justify-between items-start mb-3">
                                 <h4 class="font-bold text-slate-800">🌎 LATAM — Email General</h4>
@@ -764,10 +893,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- CONSIDERACIÓN TRANSVERSAL -->
             <div class="mt-16 bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg shadow-sm">
                 <div class="flex items-start gap-4">
                     <i class="fa-solid fa-magnifying-glass text-blue-500 text-2xl mt-1"></i>
@@ -780,7 +907,6 @@
                 </div>
             </div>
 
-            <!-- LINK A SIGUIENTE SECCIÓN -->
             <div class="mt-8 text-center">
                 <a href="#tareas" class="inline-flex items-center gap-2 text-ukg-teal font-bold hover:underline transition">
                     Ver Sección: Tareas SDR <i class="fa-solid fa-arrow-right"></i>
@@ -790,13 +916,9 @@
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECCIÓN 4: TAREAS SDR (ACTUALIZADA) -->
-    <!-- ========================================== -->
     <section id="tareas" class="py-16 bg-slate-50 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Header Tareas -->
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <span class="bg-orange-50 text-orange-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">Gestión Diaria</span>
                 <h2 class="text-3xl font-bold text-slate-900 mb-4">Tareas SDR & Ejecución</h2>
@@ -805,7 +927,6 @@
                 </p>
             </div>
 
-            <!-- OBJETIVO DE EJECUCIÓN -->
             <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100 mb-12 flex flex-col md:flex-row items-center gap-6">
                 <div class="w-16 h-16 bg-ukg-cyan/10 rounded-full flex items-center justify-center text-ukg-cyan shrink-0">
                     <i class="fa-solid fa-crosshairs text-3xl"></i>
@@ -816,10 +937,8 @@
                 </div>
             </div>
 
-            <!-- ORGANIZACIÓN DEL TRABAJO (MODELO COLABORATIVO) -->
             <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-orange-500 pl-3">👥 Organización del Trabajo SDR</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <!-- Igor -->
                 <div class="bg-white rounded-xl p-6 shadow-sm border-t-4 border-yellow-400 flex flex-col h-full">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">🇧🇷</span>
@@ -841,7 +960,6 @@
                     </ul>
                 </div>
 
-                <!-- Robert -->
                 <div class="bg-white rounded-xl p-6 shadow-sm border-t-4 border-blue-400 flex flex-col h-full">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">🌎</span>
@@ -863,7 +981,6 @@
                 </div>
             </div>
 
-            <!-- PRINCIPIO DE COLABORACIÓN -->
             <div class="bg-slate-100 rounded-xl p-6 mb-4 border border-slate-200">
                 <div class="flex items-center gap-3 mb-3 text-ukg-teal">
                     <i class="fa-solid fa-people-arrows text-2xl"></i>
@@ -889,14 +1006,12 @@
                 </div>
             </div>
             
-            <!-- NOTA COLABORATIVA -->
             <div class="text-center mb-12">
                 <p class="text-xs text-slate-500 italic bg-white inline-block px-4 py-2 rounded-full border border-slate-100 shadow-sm">
                     💡 El trabajo se organiza de forma colaborativa. El foco por idioma ayuda a optimizar la calidad, pero ambos SDR pueden dar continuidad cuando el contexto lo amerita.
                 </p>
             </div>
 
-            <!-- DINÁMICA DE TRABAJO (Alternancia) -->
             <div class="bg-slate-100 rounded-xl p-8 mb-12 border border-slate-200 opacity-75">
                 <h3 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
                     <i class="fa-solid fa-rotate text-ukg-teal"></i> Dinámica de Alternancia (Referencial)
@@ -914,10 +1029,8 @@
                 </div>
             </div>
 
-            <!-- OBJETIVOS SEMANALES (3 COLUMNAS) -->
             <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-ukg-teal pl-3">📌 Ejecución Semanal</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <!-- LinkedIn -->
                 <div class="bg-white p-5 rounded-lg border border-slate-100 shadow-sm">
                     <h4 class="font-bold text-blue-700 mb-3"><i class="fa-brands fa-linkedin"></i> LinkedIn</h4>
                     <ul class="text-sm text-slate-600 space-y-2">
@@ -927,7 +1040,6 @@
                         <li>• Interacción (Likes/Comentarios).</li>
                     </ul>
                 </div>
-                <!-- Webinar -->
                 <div class="bg-white p-5 rounded-lg border border-slate-100 shadow-sm">
                     <h4 class="font-bold text-purple-700 mb-3"><i class="fa-solid fa-video"></i> Webinar</h4>
                     <ul class="text-sm text-slate-600 space-y-2">
@@ -936,7 +1048,6 @@
                         <li>• Acompañamiento registro.</li>
                     </ul>
                 </div>
-                <!-- Email -->
                 <div class="bg-white p-5 rounded-lg border border-slate-100 shadow-sm">
                     <h4 class="font-bold text-green-700 mb-3"><i class="fa-regular fa-envelope"></i> Email Mkt</h4>
                     <ul class="text-sm text-slate-600 space-y-2">
@@ -947,10 +1058,8 @@
                 </div>
             </div>
 
-            <!-- REPORTE SEMANAL -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 
-                <!-- Columna Izquierda: Seguimiento -->
                 <div>
                     <h3 class="text-lg font-bold text-slate-800 mb-4">📈 Seguimiento y Medición</h3>
                     <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm space-y-4">
@@ -965,7 +1074,6 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Formato Reporte -->
                 <div>
                     <h3 class="text-lg font-bold text-slate-800 mb-4">📊 Reporte Semanal Simple</h3>
                     <div class="report-snippet p-4 rounded text-xs text-slate-700 overflow-x-auto shadow-inner">
@@ -992,7 +1100,6 @@ Resultados
                 </div>
             </div>
 
-            <!-- PRINCIPIO FINAL -->
             <div class="text-center bg-ukg-dark text-white p-8 rounded-xl shadow-lg">
                 <i class="fa-solid fa-star text-yellow-400 text-2xl mb-3"></i>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">"No es hacer más, sino hacer mejor lo que acerca a resultados."</h3>
@@ -1002,9 +1109,6 @@ Resultados
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECCIÓN 5: MENSAJES DE EJEMPLO (NUEVA) -->
-    <!-- ========================================== -->
     <section id="mensajes" class="py-16 bg-white border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -1105,7 +1209,7 @@ Resultados
                     </div>
 
                     <div class="mt-8">
-                        <h4 class="font-bold text-slate-700 border-l-4 border-yellow-500 pl-3 mb-4">Campaña 2: Reforma Laboral (36 hs sem)</h4>
+                        <h4 class="font-bold text-slate-700 border-l-4 border-yellow-500 pl-3 mb-4">Campaña 2: Reforma Laboral (5x2)</h4>
                         <div class="space-y-3">
                             
                             <details class="group">
@@ -1248,7 +1352,7 @@ Resultados
             <div class="mb-12">
                 <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-3">
                     <span class="text-3xl">📧</span>
-                    <h3 class="text-2xl font-bold text-ukg-teal">Email — Brasil (Reforma 36 hs sem)</h3>
+                    <h3 class="text-2xl font-bold text-ukg-teal">Email — Brasil (Reforma 5x2)</h3>
                 </div>
 
                 <div class="bg-indigo-50 p-4 rounded-lg mb-6 text-sm text-indigo-800 border border-indigo-100">
@@ -1372,10 +1476,7 @@ Fico à disposição,
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECCIÓN 6: RECURSOS (NUEVA) -->
-    <!-- ========================================== -->
-  <section id="recursos" class="py-16 bg-slate-50 border-t border-slate-200">
+    <section id="recursos" class="py-16 bg-slate-50 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -1456,7 +1557,6 @@ Fico à disposição,
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-ukg-dark text-slate-300 py-6 mt-auto">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs md:text-sm">
             <div class="mb-2 md:mb-0">
