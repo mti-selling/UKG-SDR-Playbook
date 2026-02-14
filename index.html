@@ -1110,20 +1110,20 @@ Resultados
         </div>
     </section>
 
-    <section id="mensajes" class="py-16 bg-white border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   <section id="mensajes" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="text-center max-w-3xl mx-auto mb-10">
                 <span class="bg-indigo-50 text-indigo-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full mb-4 inline-block">Scripts & Templates</span>
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Mensajes de Ejemplo</h2>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Mensajes / Secuencias</h2>
                 <p class="text-slate-500 text-lg mb-6">
-                    Por canal, campaña e idioma. Haz clic en los bloques de LinkedIn para ver el detalle.
+                    Estructura de comunicación por país y campaña. Despliega cada bloque para ver el detalle de los mensajes.
                 </p>
                 
                 <div class="flex flex-col md:flex-row justify-center items-center gap-4">
                     <div class="inline-flex items-center gap-2 bg-yellow-50 text-yellow-800 px-4 py-2 rounded-lg text-sm border border-yellow-100 shadow-sm">
                         <i class="fa-solid fa-language text-yellow-600"></i>
-                        <span class="italic">Nota: Incluye traducciones y lógica estructural.</span>
+                        <span class="italic">Nota: Textos en idioma nativo del prospecto.</span>
                     </div>
 
                     <a href="https://docs.google.com/document/d/1_Xz9kv2lYzI0ohIUhAOWEdqR3ou5Z1CyF3ZSkveWY5I/edit?tab=t.0#heading=h.nm74s6nounvj" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-slate-700 transition shadow-md hover:shadow-lg">
@@ -1133,222 +1133,357 @@ Resultados
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <!-- CONTENEDOR PRINCIPAL DE PAÍSES -->
+            <div class="space-y-12">
 
-                <div class="space-y-8">
-                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
-                        <span class="text-3xl">🇧🇷</span>
-                        <h3 class="text-2xl font-bold text-blue-800">LinkedIn — Brasil</h3>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-slate-700 border-l-4 border-blue-500 pl-3 mb-4">Campaña 1: Prospección General</h4>
-                        <div class="space-y-3">
-                            
-                            <details class="group">
-                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-ukg-teal transition">
-                                    <span>1. Mensaje de Conexión</span>
-                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-ukg-cyan"></i></span>
-                                </summary>
-                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
-                                    Olá {FirstName}, tudo bem?
-                                    Sou Channel Sales Manager LATAM na UKG.
-                                    Gostaria de me conectar com você.
-                                </div>
-                            </details>
-
-                            <details class="group">
-                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-ukg-teal transition">
-                                    <span>2. Mensaje de Pregunta</span>
-                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-ukg-cyan"></i></span>
-                                </summary>
-                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
-                                    Olá {FirstName}, bom dia 😊
-                                    Você poderia me ajudar com uma consulta?
-                                </div>
-                            </details>
-
-                            <details class="group">
-                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-white bg-ukg-teal border border-ukg-teal rounded-lg shadow-md hover:bg-ukg-dark transition">
-                                    <span>3. Mensaje de Valor (Modelo Replicable)</span>
-                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-white"></i></span>
-                                </summary>
-                                <div class="bg-slate-50 border border-slate-200 rounded-b-lg p-4 text-sm mt-1">
-                                    
-                                    <div class="flex flex-col gap-4">
-                                        <div class="bg-blue-50 p-3 rounded border border-blue-100 text-xs text-blue-900">
-                                            <strong class="block mb-2 uppercase text-blue-700 border-b border-blue-200 pb-1">Estructura Lógica (4 Bloques)</strong>
-                                            <ol class="list-decimal list-inside space-y-1">
-                                                <li><strong>Abertura:</strong> Conectar com a resposta ("Obrigado pela abertura").</li>
-                                                <li><strong>Âncora:</strong> Demonstrar entendimento ("Pela sua experiência em...").</li>
-                                                <li><strong>Dor Concreta:</strong> 3 dores reais ("Visibilidade sobre X, Y, Z").</li>
-                                                <li><strong>Autoridade + CTA:</strong> UKG + GPTW ("Ajudamos empresas similares...").</li>
-                                            </ol>
-                                        </div>
-
-                                        <div class="script-box relative">
-                                            <span class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">Template Base</span>
-                                            Obrigado, {FirstName}, pela abertura. 
-                                            
-                                            Pela sua experiência em {CARGO} dentro de {INDÚSTRIA}, queria te consultar se hoje na {EMPRESA} vocês têm visibilidade clara sobre {DOR 1}, {DOR 2} e {DOR 3}, que costumam ser pontos sensíveis nesse tipo de operação. 
-                                            
-                                            Te consulto porque na UKG, junto com Great Place to Work®, ajudamos empresas similares a melhorar esse equilíbrio entre operação e resultados. 
-                                            
-                                            Se te parecer bem, podemos conversar uns minutos, sem compromisso, para validar oportunidades ou compartilhar alguns casos de uso. O que você acha?
-                                        </div>
-
-                                        <div class="mt-2 pt-2 border-t border-slate-200">
-                                            <p class="text-xs font-bold text-slate-500 mb-2">Variación Corta / Directa:</p>
-                                            <p class="text-xs text-slate-600 italic">"Obrigado, {Name}. Pela sua experiência em RH no varejo, queria saber se hoje temas como turnos e custos trabalhistas estão totalmente sob controle. Na UKG trabalhamos justamente sobre esse equilíbrio. O que acha de conversarmos alguns minutos?"</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </details>
-
+                <!-- 🇧🇷 BRASIL BLOCK -->
+                <div class="border border-slate-200 rounded-xl bg-slate-50 overflow-hidden shadow-sm">
+                    <div class="bg-white border-b border-slate-200 p-6 flex items-center gap-4">
+                        <span class="text-4xl">🇧🇷</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">BRASIL</h3>
+                            <p class="text-sm text-slate-500">Secuencias activas en Portugués</p>
                         </div>
                     </div>
 
-                    <div class="mt-8">
-                        <h4 class="font-bold text-slate-700 border-l-4 border-yellow-500 pl-3 mb-4">Campaña 2: Reforma Laboral 36 hs x Sem </h4>
-                        <div class="space-y-3">
+                    <div class="p-6 space-y-4">
+
+                        <!-- CAMPAÑA 1 -->
+                        <details class="group bg-white border border-slate-200 rounded-lg open:shadow-md transition-all duration-300">
+                            <summary class="flex justify-between items-center cursor-pointer p-5 font-semibold text-slate-700 hover:bg-slate-50 rounded-lg transition list-none">
+                                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                                    <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs bg-indigo-50 px-2 py-1 rounded border border-indigo-100">Campaña 1</span>
+                                    <span class="text-lg">Tecnología, Operaciones y Finanzas</span>
+                                    <span class="text-xs text-slate-400 font-normal md:border-l md:pl-4 border-slate-200">3 Toques • Perfil: Sergio</span>
+                                </div>
+                                <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                            </summary>
                             
-                            <details class="group">
-                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-yellow-500 transition">
-                                    <span>1. Mensaje de Conexión</span>
-                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-yellow-500"></i></span>
-                                </summary>
-                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
-                                    Olá {FirstName}, tudo bem?
-                                    Tenho acompanhado as conversas sobre possíveis mudanças na jornada de trabalho no Brasil e seus impactos operacionais.
-                                    Gostaria de me conectar com você.
+                            <div class="p-5 border-t border-slate-100 bg-slate-50/50 space-y-6 text-sm text-slate-700">
+                                
+                                <!-- Conexión -->
+                                <div class="relative pl-4 border-l-2 border-slate-300">
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Conexão</span>
+                                    <p class="whitespace-pre-line bg-white p-3 rounded border border-slate-200 shadow-sm">Olá {FirstName}.
+                                    Estou ampliando minha rede e trabalho com Workforce Management (turnos, tempo e controle de ponto).
+                                    Conectamos?</p>
                                 </div>
-                            </details>
 
-                            <details class="group">
-                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-yellow-500 transition">
-                                    <span>2. Mensaje de Pregunta</span>
-                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-yellow-500"></i></span>
-                                </summary>
-                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
-                                    Olá {FirstName}, bom dia 😊
-                                    Você poderia me ajudar com uma consulta?
+                                <!-- Mensaje 1 -->
+                                <div class="relative pl-4 border-l-2 border-slate-300">
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Mensagem 1</span>
+                                    <div class="bg-white p-3 rounded border border-slate-200 shadow-sm whitespace-pre-line">Obrigado por aceitar a conexão, {FirstName}.
+                                    Te escrevo porque, pelo papel que você desempenha, o que fazemos na UKG pode agregar valor à sua gestão.
+                                    Trabalhamos com organizações de grande porte ajudando-as a ter maior clareza sobre sua operação de força de trabalho, especialmente em:
+                                    • Custos reais de turnos e horas extras
+                                    • Absenteísmo e produtividade
+                                    • Conformidade regulatória em múltiplos países, entre outros
+                                    Hoje vocês têm visibilidade em tempo real desses pontos?</div>
                                 </div>
-                            </details>
 
-                            <details class="group">
-                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-white bg-yellow-500 border border-yellow-500 rounded-lg shadow-md hover:bg-yellow-600 transition">
-                                    <span>3. Mensaje Reforma (Consultivo)</span>
-                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-white"></i></span>
-                                </summary>
-                                <div class="bg-slate-50 border border-slate-200 rounded-b-lg p-4 text-sm mt-1">
-                                    
-                                    <div class="flex flex-col gap-4">
-                                        <div class="bg-yellow-50 p-3 rounded border border-yellow-100 text-xs text-yellow-900">
-                                            <strong class="block mb-2 uppercase text-yellow-700 border-b border-yellow-200 pb-1">Lógica Reforma</strong>
-                                            <ul class="list-disc list-inside space-y-1">
-                                                <li><strong>Dolor Activado:</strong> Conectar la reforma con problemas operativos reales (control, costos, compliance).</li>
-                                                <li><strong>Autoridad Regional:</strong> "Ya acompañamos procesos similares en México/LATAM".</li>
-                                                <li><strong>No Venta:</strong> Anticiparse a cambios, no comprar software.</li>
-                                            </ul>
-                                        </div>
+                                <!-- Mensaje 2 -->
+                                <div class="relative pl-4 border-l-2 border-slate-300">
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Mensagem 2</span>
+                                    <div class="bg-white p-3 rounded border border-slate-200 shadow-sm whitespace-pre-line">{FirstName}, compartilho um resumo executivo da UKG 👉 https://goo.su/mEfU2
+                                    Mais de 2/3 das Fortune 1000 utilizam nossa plataforma em +150 países.
+                                    Não apenas gerenciamos tempo e presença; ajudamos a projetar impacto financeiro e otimizar a operação com IA centrada nas pessoas.
+                                    No documento você verá casos com economias relevantes apenas ao melhorar planejamento e visibilidade.
+                                    Vamos agendar 20 minutos e avaliar se isso pode gerar impacto na sua operação.</div>
+                                </div>
 
-                                        <div class="script-box relative">
-                                            <span class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">Template Reforma</span>
-                                            Obrigado, {FirstName}, pela abertura.
-                                            
-                                            Pelo seu cargo de {CARGO} dentro de {INDÚSTRIA}, queria te consultar se hoje na {EMPRESA} já estão avaliando como a reforma trabalhista no Brasil pode impactar em {DOR 1}, {DOR 2} e {DOR 3}, que costumam ser pontos críticos em operações regionais.
-                                            
-                                            Te consulto porque na UKG já acompanhamos empresas em processos similares no México e outros países, e hoje estamos apoiando equipes que precisam se antecipar a essas mudanças tanto no operacional quanto no regulatório.
-                                            
-                                            Se te parecer bem, podemos conversar uns minutos, sem compromisso, para validar como estão abordando o tema. O que você acha?
+                                <!-- Mensaje 3 -->
+                                <div class="relative pl-4 border-l-2 border-slate-300">
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Mensagem 3</span>
+                                    <div class="bg-white p-3 rounded border border-slate-200 shadow-sm whitespace-pre-line">{FirstName}, sobre o material que compartilhei, você conseguiu revisar?
+                                    O que estamos observando na região é um padrão claro: pressão nos custos trabalhistas, alta rotatividade, baixa visibilidade preditiva e crescente complexidade regulatória.
+                                    A UKG foi projetada para resolver esses pontos a partir de uma única plataforma integrada.
+                                    Podemos realizar uma auditoria inicial sem custo para identificar lacunas concretas e validar, com números, se existe uma oportunidade real de melhoria.
+                                    Faz sentido buscarmos um espaço para conversar?</div>
+                                </div>
+
+                            </div>
+                        </details>
+
+                        <!-- CAMPAÑA 2 -->
+                        <details class="group bg-white border border-slate-200 rounded-lg open:shadow-md transition-all duration-300">
+                            <summary class="flex justify-between items-center cursor-pointer p-5 font-semibold text-slate-700 hover:bg-slate-50 rounded-lg transition list-none">
+                                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                                    <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs bg-indigo-50 px-2 py-1 rounded border border-indigo-100">Campaña 2</span>
+                                    <span class="text-lg">Gerencia General y RRHH</span>
+                                    <span class="text-xs text-slate-400 font-normal md:border-l md:pl-4 border-slate-200">1 Toque Consultivo</span>
+                                </div>
+                                <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                            </summary>
+                            
+                            <div class="p-5 border-t border-slate-100 bg-slate-50/50 space-y-6 text-sm text-slate-700">
+                                
+                                <!-- Conexión -->
+                                <div class="relative pl-4 border-l-2 border-slate-300">
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Conexão</span>
+                                    <p class="whitespace-pre-line bg-white p-3 rounded border border-slate-200 shadow-sm">Oi {FirstName}. Tudo bem? Sou Channel Sales Manager LATAM na UKG e gostaria de adicionar você à minha rede.</p>
+                                </div>
+
+                                <!-- Mensaje 1 Variaciones -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="relative pl-4 border-l-2 border-blue-400">
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase">Mensagem 1 (A)</span>
+                                            <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
                                         </div>
+                                        <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line h-full">Obrigado pela conexão, {FirstName}! 😊 Pode me ajudar com uma dúvida rápida?</div>
                                     </div>
-
+                                    <div class="relative pl-4 border-l-2 border-blue-400">
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase">Mensagem 1 (B)</span>
+                                            <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line h-full">Olá {FirstName}, bom dia, obrigado por aceitar a conexão.
+                                        Gostaria de saber se você poderia me ajudar com uma consulta breve relacionada ao seu papel?</div>
+                                    </div>
                                 </div>
-                            </details>
 
-                        </div>
+                                <!-- Mensaje 2 Variaciones -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="relative pl-4 border-l-2 border-purple-400">
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase">Mensagem 2 (A)</span>
+                                            <span class="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded font-bold uppercase">Manual</span>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border border-purple-100 shadow-sm whitespace-pre-line h-full">Obrigado, Jessica.
+                                        Pela sua responsabilidade em Operações, queria perguntar se hoje na Aqualia a cobertura de turnos é totalmente previsível ou se exige ajustes frequentes que impactam custos e continuidade.
+                                        Na UKG ajudamos organizações complexas a melhorar essa visibilidade e controle, entre outros pontos relevantes.
+                                        Se fizer sentido, podemos fazer uma chamada de 20 minutos esta semana para trocar ideias e conversar sobre o tema?</div>
+                                    </div>
+                                    <div class="relative pl-4 border-l-2 border-purple-400">
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase">Mensagem 2 (B)</span>
+                                            <span class="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded font-bold uppercase">Manual</span>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border border-purple-100 shadow-sm whitespace-pre-line h-full">Obrigado, Jessica.
+                                        Queria te perguntar, considerando seu papel, se hoje a cobertura de turnos na Aqualia está totalmente sob controle ou se a rotatividade e ajustes de última hora continuam impactando a operação.
+                                        Na UKG trabalhamos com organizações globais como a Coca-Cola, ajudando a resolver esses e outros desafios.
+                                        Podemos fazer uma avaliação breve sem custo para identificar lacunas concretas e validar se existe uma oportunidade real de melhoria.
+                                        Leva apenas 20 minutos — você tem disponibilidade?</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </details>
+
+                        <!-- CAMPAÑA 3 -->
+                        <details class="group bg-white border border-slate-200 rounded-lg open:shadow-md transition-all duration-300">
+                            <summary class="flex justify-between items-center cursor-pointer p-5 font-semibold text-slate-700 hover:bg-slate-50 rounded-lg transition list-none">
+                                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                                    <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs bg-indigo-50 px-2 py-1 rounded border border-indigo-100">Campaña 3</span>
+                                    <span class="text-lg">Reforma Trabalhista</span>
+                                    <span class="text-xs text-slate-400 font-normal md:border-l md:pl-4 border-slate-200">3 Toques</span>
+                                </div>
+                                <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                            </summary>
+                            
+                            <div class="p-5 border-t border-slate-100 bg-slate-50/50 space-y-6 text-sm text-slate-700">
+                                
+                                <!-- Conexión Auto -->
+                                <div class="relative pl-4 border-l-2 border-blue-400">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-[10px] font-bold text-slate-500 uppercase">Conexão</span>
+                                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                    </div>
+                                    <p class="whitespace-pre-line bg-white p-3 rounded border border-blue-100 shadow-sm">Olá {FirstName}.
+                                    Trabalho com temas de Workforce Management e conformidade trabalhista no Brasil.
+                                    Com o debate atual sobre jornada e turnos, me interessa trocar perspectivas.
+                                    Conectamos?</p>
+                                </div>
+
+                                <!-- Mensagem 1 Auto -->
+                                <div class="relative pl-4 border-l-2 border-blue-400">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-[10px] font-bold text-slate-500 uppercase">Mensagem 1</span>
+                                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                    </div>
+                                    <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line">Obrigado por aceitar, {FirstName}.
+                                    Te escrevo porque no Brasil muitas empresas já estão analisando a possível mudança na jornada (redução de horas e eliminação do 6x1), mais pelo impacto operacional do que pela lei em si.
+                                    Em experiências semelhantes, o maior desafio não foi a norma, mas reorganizar turnos sem elevar custos ou afetar produtividade.
+                                    Do seu ponto de vista, vocês já estão avaliando esse impacto na operação?</div>
+                                </div>
+
+                                <!-- Mensaje 2 Auto -->
+                                <div class="relative pl-4 border-l-2 border-blue-400">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-[10px] font-bold text-slate-500 uppercase">Mensagem 2</span>
+                                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                    </div>
+                                    <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line">{FirstName}, compartilho uma infografia que preparamos na UKG com cenários concretos sobre redução de jornada e seu impacto em custos, cobertura e controle 👉 https://goo.su/mEfU2
+                                    No México, vimos que as empresas que simularam cenários com antecedência tomaram decisões melhores e evitaram sobrecustos.
+                                    Se fizer sentido, podemos revisar brevemente o caso de vocês e projetar o impacto potencial.</div>
+                                </div>
+
+                                <!-- Mensaje 3 Auto -->
+                                <div class="relative pl-4 border-l-2 border-blue-400">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-[10px] font-bold text-slate-500 uppercase">Mensagem 3</span>
+                                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                    </div>
+                                    <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line">{FirstName}, você conseguiu revisar o material?
+                                    O principal risco normalmente não é a lei, mas não antecipar como ela pode afetar turnos, horas extras e custos trabalhistas.
+                                    Podemos fazer uma avaliação preventiva sem custo para validar se existe impacto real.
+                                    Leva apenas 20 minutos — você tem disponibilidade?</div>
+                                </div>
+
+                            </div>
+                        </details>
+
                     </div>
                 </div>
 
-                <div class="space-y-8">
-                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
-                        <span class="text-3xl">🌎</span>
-                        <h3 class="text-2xl font-bold text-blue-800">LinkedIn — LATAM</h3>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-slate-700 border-l-4 border-indigo-500 pl-3 mb-4">Prospección General (Español)</h4>
-                        <div class="space-y-3">
-                            
-                            <details class="group">
-                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-ukg-teal transition">
-                                    <span>1. Mensaje de Conexión</span>
-                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-ukg-cyan"></i></span>
-                                </summary>
-                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
-                                    Hola {FirstName}, ¿cómo estás?
-                                    Soy Channel Sales Manager LATAM en UKG.
-                                    Me gustaría conectar contigo.
-                                </div>
-                            </details>
-
-                            <details class="group">
-                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-sm hover:border-ukg-teal transition">
-                                    <span>2. Mensaje de Pregunta</span>
-                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-ukg-cyan"></i></span>
-                                </summary>
-                                <div class="script-box mt-2 text-sm border-t-0 rounded-t-none">
-                                    Hola {FirstName}, buen día 😊
-                                    ¿Me ayudarías con una consulta?
-                                </div>
-                            </details>
-
-                            <details class="group">
-                                <summary class="flex justify-between items-center cursor-pointer p-4 font-bold text-white bg-indigo-600 border border-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 transition">
-                                    <span>3. Mensaje de Valor (Modelo Replicable)</span>
-                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-white"></i></span>
-                                </summary>
-                                <div class="bg-slate-50 border border-slate-200 rounded-b-lg p-4 text-sm mt-1">
-                                    
-                                    <div class="flex flex-col gap-4">
-                                        <div class="bg-indigo-50 p-3 rounded border border-indigo-100 text-xs text-indigo-900">
-                                            <strong class="block mb-2 uppercase text-indigo-700 border-b border-indigo-200 pb-1">Estructura Lógica (4 Bloques)</strong>
-                                            <ol class="list-decimal list-inside space-y-1">
-                                                <li><strong>Apertura:</strong> Bajar defensas ("Gracias por la apertura").</li>
-                                                <li><strong>Ancla al Rol:</strong> Demostrar entendimiento, no investigación ("Por tu experiencia en...").</li>
-                                                <li><strong>Dolor Concreto:</strong> Máx 3 dolores ("Visibilidad sobre X, Y").</li>
-                                                <li><strong>Autoridad Suave:</strong> UKG + GPTW ("Ayudamos a empresas similares...").</li>
-                                                <li><strong>CTA:</strong> Sin salida fácil ("Validar oportunidades en unos minutos").</li>
-                                            </ol>
-                                        </div>
-
-                                        <div class="script-box relative">
-                                            <span class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">Plantilla Base</span>
-                                            Gracias, {FirstName}, por la apertura.
-                                            
-                                            Por tu experiencia en {ROL} dentro de {INDUSTRIA}, quería consultarte si hoy en {EMPRESA} tienen visibilidad clara sobre {DOLOR 1}, {DOLOR 2} y {DOLOR 3}, que suelen ser puntos sensibles en este tipo de operaciones.
-                                            
-                                            Te consulto porque en UKG, junto con Great Place to Work®, ayudamos a empresas similares a mejorar este equilibrio entre operación y resultados.
-                                            
-                                            Si te parece, podemos conversar unos minutos, sin compromiso, para validar oportunidades o compartir algunos casos de uso. ¿Qué te parece?
-                                        </div>
-
-                                        <div class="mt-2 pt-2 border-t border-slate-200">
-                                            <p class="text-xs font-bold text-slate-500 mb-2">Variación Breve:</p>
-                                            <p class="text-xs text-slate-600 italic">"Gracias, Arianna. Por tu experiencia en RRHH, quería saber si hoy temas como turnos y costos laborales están totalmente bajo control. En UKG trabajamos justamente sobre ese equilibrio. ¿Te parece si lo conversamos unos minutos, sin compromiso?"</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </details>
-
+                <!-- 🌎 LATAM BLOCK (ACTUALIZADO) -->
+                <div class="border border-slate-200 rounded-xl bg-slate-50 overflow-hidden shadow-sm">
+                    <div class="bg-white border-b border-slate-200 p-6 flex items-center gap-4">
+                        <span class="text-4xl">🌎</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">LATAM</h3>
+                            <p class="text-sm text-slate-500">Secuencias activas en Español</p>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                    <div class="p-6 space-y-4">
+                        
+                        <!-- CAMPAÑA 1: Nurturing General -->
+                        <details class="group bg-white border border-slate-200 rounded-lg open:shadow-md transition-all duration-300">
+                            <summary class="flex justify-between items-center cursor-pointer p-5 font-semibold text-slate-700 hover:bg-slate-50 rounded-lg transition list-none">
+                                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                                    <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs bg-indigo-50 px-2 py-1 rounded border border-indigo-100">Campaña 1</span>
+                                    <span class="text-lg">Nurturing General</span>
+                                    <span class="text-xs text-slate-400 font-normal md:border-l md:pl-4 border-slate-200">3 Toques • Perfil: Jorge</span>
+                                </div>
+                                <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                            </summary>
+                            
+                            <div class="p-5 border-t border-slate-100 bg-slate-50/50 space-y-6 text-sm text-slate-700">
+                                
+                                <!-- Conexión Auto -->
+                                <div class="relative pl-4 border-l-2 border-blue-400">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-[10px] font-bold text-slate-500 uppercase">Conexión</span>
+                                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                    </div>
+                                    <p class="whitespace-pre-line bg-white p-3 rounded border border-blue-100 shadow-sm">Hola {FirstName}. Estoy ampliando mi red haciendo networking y trabajo en Workforce Management (turnos, tiempo y asistencia). ¿Conectamos?</p>
+                                </div>
+
+                                <!-- Mensaje 1 Auto -->
+                                <div class="relative pl-4 border-l-2 border-blue-400">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-[10px] font-bold text-slate-500 uppercase">Mensaje 1</span>
+                                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                    </div>
+                                    <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line">Gracias por aceptar la conexión, {FirstName}.
+                                    Te escribo porque, por el rol que desempeñas, lo que hacemos en UKG podría aportar valor a tu gestión.
+                                    Trabajamos con organizaciones de gran escala ayudándole a tener mayor claridad sobre su operación laboral:
+                                    • Costos reales de turnos y horas extra
+                                    • Ausentismo y productividad
+                                    • Cumplimiento regulatorio en múltiples países, entre otros.
+                                    Hoy tienen visibilidad en tiempo real de esos temas?</div>
+                                </div>
+
+                                <!-- Mensaje 2 Auto -->
+                                <div class="relative pl-4 border-l-2 border-blue-400">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-[10px] font-bold text-slate-500 uppercase">Mensaje 2</span>
+                                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                    </div>
+                                    <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line">{FirstName}, te comparto un resumen ejecutivo de UKG 👉 https://goo.su/3jNV3tf
+                                    Más de 2/3 de las Fortune 1000 trabajan con nuestra plataforma en +150 países. No solo gestionamos tiempo y asistencia; ayudamos a proyectar impacto financiero y optimizar la operación con IA centrada en personas.
+                                    En el documento verás casos con ahorros relevantes solo mejorando planificación y visibilidad.
+                                    Agendemos 20 minutos y veamos si esto puede generar impacto en su operación.</div>
+                                </div>
+
+                                <!-- Mensaje 3 Auto -->
+                                <div class="relative pl-4 border-l-2 border-blue-400">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-[10px] font-bold text-slate-500 uppercase">Mensaje 3</span>
+                                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automatico</span>
+                                    </div>
+                                    <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line">{FirstName}, sobre el material que te compartí, pudiste verlo?
+                                    Lo que estamos viendo en la región es un patrón claro: presión en costos laborales, altas rotaciones, baja visibilidad predictiva y creciente complejidad regulatoria.
+                                    UKG fue diseñado para resolver diferentes puntos desde una sola plataforma. Podemos hacer una auditoría inicial sin costo para identificar brechas concretas y validar con números si existe una oportunidad real de mejora.
+                                    Te interesa que busquemos un espacio?</div>
+                                </div>
+
+                            </div>
+                        </details>
+
+                        <!-- CAMPAÑA 2: Consultiva -->
+                        <details class="group bg-white border border-slate-200 rounded-lg open:shadow-md transition-all duration-300">
+                            <summary class="flex justify-between items-center cursor-pointer p-5 font-semibold text-slate-700 hover:bg-slate-50 rounded-lg transition list-none">
+                                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                                    <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs bg-indigo-50 px-2 py-1 rounded border border-indigo-100">Campaña 2</span>
+                                    <span class="text-lg">Campaña Consultiva de 1 Pregunta</span>
+                                    <span class="text-xs text-slate-400 font-normal md:border-l md:pl-4 border-slate-200">Prospección General LATAM</span>
+                                </div>
+                                <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                            </summary>
+                            
+                            <div class="p-5 border-t border-slate-100 bg-slate-50/50 space-y-6 text-sm text-slate-700">
+                                
+                                <!-- Mensaje 1 Variaciones -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="relative pl-4 border-l-2 border-blue-400">
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase">Mensaje 1 (A)</span>
+                                            <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line h-full">Gracias por aceptar la conexión, {FirstName}.
+                                        Siempre es valioso intercambiar perspectivas con líderes del sector.
+                                        Te puedo hacer una consulta breve sobre Workforce Management (turnos y asistencia)?</div>
+                                    </div>
+                                    <div class="relative pl-4 border-l-2 border-blue-400">
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase">Mensaje 1 (B)</span>
+                                            <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase">Automático</span>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border border-blue-100 shadow-sm whitespace-pre-line h-full">Hola {FirstName}, buen día, gracias por aceptar la conexión.
+                                        Quería saber si me podras ayudar con una consulta breve relacionada con tu rol?</div>
+                                    </div>
+                                </div>
+
+                                <!-- Mensaje 2 Variaciones -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="relative pl-4 border-l-2 border-purple-400">
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase">Mensaje 2 (A)</span>
+                                            <span class="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded font-bold uppercase">Manual</span>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border border-purple-100 shadow-sm whitespace-pre-line h-full">Gracias, Jessica.
+                                        Por tu responsabilidad en Operaciones, quería preguntarte si hoy en Aqualia la cobertura de turnos es totalmente previsible o requiere ajustes frecuentes que impactan costos y continuidad.
+                                        Desde UKG ayudamos a organizaciones complejas a mejorar esa visibilidad y control, entre otros puntos relevantes.
+                                        Si te hace sentido, ¿te parece una llamada de 20 min esta semana para hacer networking y conversar del tema?</div>
+                                    </div>
+                                    <div class="relative pl-4 border-l-2 border-purple-400">
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase">Mensaje 2 (B)</span>
+                                            <span class="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded font-bold uppercase">Manual</span>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border border-purple-100 shadow-sm whitespace-pre-line h-full">Gracias, Jessica.
+                                        Quería consultarte desde tu rol, si hoy la cobertura de turnos en Aqualia está totalmente bajo control o si rotación y ajustes de último momento siguen afectando la operación. En UKG trabajamos con organizaciones globales como Coca-Cola ayudándoles a solucionar estos y otros temas.
+                                        Podemos hacer una evaluación breve sin costo para identificar brechas concretas y validar si existe una oportunidad real de mejora. Nos lleva solo 20 minutos, tienes disponibilidad?</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </details>
+
+                    </div>
+                </div>
 
             <div class="mb-12">
                 <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-3">
